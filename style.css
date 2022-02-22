@@ -12,52 +12,69 @@
       flex-direction: column;
       height:100%;
   }
-
-div#instruction {
+H1 {
+    position: absolute;
+    top: 380px;
+    margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+    padding: 10px 20px 10px 20px;
+    width:fit-content;
     font-family: 'Varela Round', sans-serif;
-    text-align: center;
     text-transform: capitalize;
-    color: var(--blue);
-    background-color: #ebebeb;
     color: #FFF;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     border-style: solid;
     border-radius: 60px;
-
-    position: absolute;
-    width:fit-content;
-    left: 20;
-    right: 20;
-    margin-left: auto;
-    margin-right: auto;
-    top:400px;
-    padding: 0px 20px 0px 20px;
-    display: inline-block;
     z-index: 2;
 }
-
-div#hrt_choices {
+div.instruction
+section {
+    z-index: 1;
+}
+div.buttons {
+    position: absolute;
     display: flex;
     width: 100%;
     height: 100%;
 }
 
-div.choice {
+div.choices {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+
+a.divlink {
+    display: fixed;
+    height: 100%;
     width:50%;
+    height:100%;
+    top:0;
+    z-index: 0;
+    width:100%;
+    justify-content: flex-start;
 }
 
-div#choice_estrogen {
-    background-color: var(--pink);
-}
-
-div#choice_testosterone {
+#testosterone {
     background-color: var(--blue);
+    color: var(--blue);
 }
+
+#estrogen {
+    background-color: var(--pink);
+    color: var(--pink);
+}
+
 .choice_logo_shape {
     background-color: white;
     width: 200px;
     height: 200px;
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 100px;
     border-radius: 100%;
     display: flex;
@@ -67,25 +84,18 @@ div#choice_testosterone {
 
 .choice_logo_text {
     font-family: 'Fredoka One', cursive;
-    font-size: 100px;
+    font-size: 120px;
     /* border: 2px;
     border-style: solid; */
 }
-
-#choice_logo_estrogen {
-    color: var(--pink);
-}
-#choice_logo_testosterone {
-    color: var(--blue);
-}
-#choice_text {
+.choice_text {
     color: #FFF;
-    font-size: 30px;
+    font-size: 24px;
     padding-top: 0px;
-    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
     text-align: center;
-    margin: 0px;
-    margin-top: 20px;
+    margin-top: 0.5em;
 }
 
 footer {
@@ -99,23 +109,14 @@ footer {
     border-radius: 20px;
     margin: 10px;
     margin-bottom: 15px;
-    z-index: 2;
+    z-index: 3;
 }
-
-a {
+a#footer {
     font-family: 'Fredoka One', cursive;
     text-decoration:none;
     color: var(--blue);
 }
-a:hover {
+a#footer:hover {
     color: var(--pink);
 }
 
-a#divlink {
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left: 0;
-    z-index: 1;
-}
