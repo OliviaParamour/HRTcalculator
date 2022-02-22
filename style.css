@@ -99,6 +99,7 @@ footer {
     border-radius: 20px;
     margin: 10px;
     margin-bottom: 15px;
+    z-index: 2;
 }
 
 a {
