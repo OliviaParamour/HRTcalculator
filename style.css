@@ -12,9 +12,16 @@
       flex-direction: column;
       height:100%;
   }
+.objects {
+    display: flex;
+    flex-direction: column;
+}
+.instructions {
+    height: 100%;
+}
 H1 {
     position: absolute;
-    top: 380px;
+    top: max(42vh, 340px);
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -61,13 +68,38 @@ a.divlink {
     font-style: normal;
     text-decoration: none;
 }
-
-.buttons:hover > a {
+/*
+.choices:hover > .choice > a {
+    background-color: rgba(0, 0, 0, 0.5);
+} */
+.screen {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    z-index: 2;
+}
+.choices:hover > .choice > a > .screen {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.buttons:hover > a:hover {
+.choices:hover > .choice > a:hover > .screen {
     background-color: transparent;
+}
+
+a {
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.choice:hover > a:hover {
+    background-color: transparent;
+}
+
+.choice:hover > a:hover > .choice_logo_shape {
+    animation-play-state: running;
 }
 
 .choice {
@@ -88,17 +120,20 @@ a.divlink {
     color: var(--pink);
 }
 
+
+
 .choice_logo_shape {
     background-color: white;
     width: 200px;
     height: 200px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 10vh;
+    margin-top: 100px;
     border-radius: 100%;
     display: flex;
     align-items:center;
     justify-content: center;
+    animation-play-state: paused;
 }
 
 .choice_logo_text {
