@@ -218,7 +218,7 @@ footer a:hover {
     color: var(--pink);
 }
 footer:hover {
-    height:6.5rem;
+    height:8.5rem;
     animation: resize;
     animation-duration: 1.5s;
     animation-iteration-count: 1;
@@ -232,5 +232,5 @@ footer:hover > a{
 
 @keyframes resize {
     0% {height:20px;}
-    100% {height:6.5rem;}
+    100% {height:8.5rem;}
 }
