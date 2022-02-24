@@ -1,14 +1,29 @@
 var audio = new Audio("Audio/choose_your_character.ogg");
-var audio2 = new Audio("chiptune_bombard_and_biniou.mp3");
+var audio2 = new Audio("Audio/2021-08-30_-_Boss_Time_-_www.FesliyanStudios.com.mp3");
 document.addEventListener("DOMContentLoaded", function(){
     hide_page()
 });
 a = document.getElementsByClassName("choices")
 
 function play_audio() {
+    audio2.play();
+    audio2.currentTime=1;
     audio.play();
-    // audio2.play();
 };
+
+function toggle_mute() {
+    a = document.getElementById("mute")
+    if (audio2.paused) {
+        audio2.play();
+        a.innerHTML="Mute"
+        a.style = "border-color: var(--darkblue); color: var(--darkblue)";
+    }
+    else {
+        audio2.pause();
+        a.innerHTML="Unmute"
+        a.style = "border-color: var(--lightblue);  color:var(--lightblue)";
+    }
+}
 
 function hide_page() {
     a = document.getElementsByClassName("instructions")[0].style.visibility = "hidden";
@@ -17,6 +32,7 @@ function hide_page() {
     b = document.getElementsByClassName("choice_logo_shape");
     d = document.getElementsByClassName("choice_text");
     e = document.getElementsByClassName("screen");
+    f = document.getElementById("mute").style.visibility = "hidden"
     for(i=0;i<b.length;i++) {
         b[i].style.visibility = "hidden";
         d[i].style.visibility = "hidden";
@@ -32,6 +48,7 @@ function load_page() {
     b = document.getElementsByClassName("choice_logo_shape");
     d = document.getElementsByClassName("choice_text");
     e = document.getElementsByClassName("screen");
+    f = document.getElementById("mute").style.visibility = "visible"
     for(let i=0;i<b.length;i++) {
         b[i].style.visibility = "visible";
         d[i].style.visibility = "visible";

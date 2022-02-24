@@ -4,7 +4,8 @@
     --pink: #F5A9B8;
     --blue: #5BCEFA;
     --grayout: rgba(0, 0, 0, 0.7);
-    --darkblue: #216681;
+    --darkblue: #23647e;
+    --lightblue: #ddf7fc;
 }
 
 body {
@@ -184,6 +185,25 @@ footer {
     color: var(--blue);
     overflow: hidden;
 }
+
+#mute {
+    position: absolute;
+    font-size: 24px;
+    font-family: 'Varela Round', sans-serif;
+    background-color: transparent;
+    color: var(--darkblue);
+    top: 0px;
+    right: 0px;
+    margin-top: 15px;
+    margin-right: 15px;
+    z-index: 4;
+    border-color: var(--darkblue);
+    border-style: solid;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: right;
+}
+
 footer p {
     color: purple;
     margin-top: 0;
