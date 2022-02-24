@@ -3,25 +3,46 @@
 :root {
     --pink: #F5A9B8;
     --blue: #5BCEFA;
+    --grayout: rgba(0, 0, 0, 0.7);
+    --darkblue: #216681;
+}
 
-  }
-
-  body {
+body {
       margin:0px;
       display: flex;
       flex-direction: column;
       height:100%;
-  }
-.objects {
-    display: flex;
-    flex-direction: column;
 }
+
+.starter {
+    position: absolute;
+    top: 250px;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    width:fit-content;
+    font-family: 'Varela Round', sans-serif;
+    text-transform: capitalize;
+    color: white;
+    background-color: var(--pink);
+    border-style: solid;
+    border-radius: 60px;
+    z-index: 2;
+}
+
+.starter:hover {
+    color: var(--pink);
+    background-color: white;
+}
+
 .instructions {
-    height: 100%;
-}
-H1 {
     position: absolute;
     top: max(42vh, 340px);
+    font-size: 50px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -36,62 +57,22 @@ H1 {
     border-style: solid;
     border-radius: 60px;
     z-index: 2;
-}
-div.instruction
-section {
-    z-index: 1;
-}
-div.buttons {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100%;
+    animation: jello;
+    animation-duration: 1s;
 }
 
-div.choices {
+.choices {
     display: flex;
-    width: 100%;
     height: 100%;
     background-color: green;
 }
 
-a.divlink {
-    display: fixed;
-    height: 100%;
-    width:50%;
-    height:100%;
-    top:0;
-    z-index: 0;
-/*
-    background-color: blue; */
-
-    font-style: normal;
-    text-decoration: none;
-}
-/*
-.choices:hover > .choice > a {
-    background-color: rgba(0, 0, 0, 0.5);
-} */
-.screen {
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    z-index: 2;
-}
 .choices:hover > .choice > a > .screen {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--grayout);
 }
 
 .choices:hover > .choice > a:hover > .screen {
     background-color: transparent;
-}
-
-a {
-    height: 100%;
-    text-decoration: none;
-    color: inherit;
-    background-color: transparent;
-    z-index: 1;
 }
 
 .choice:hover > a:hover {
@@ -99,8 +80,24 @@ a {
 }
 
 .choice:hover > a:hover > .choice_logo_shape {
-    animation-play-state: running;
+    animation: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
 }
+H1:hover + .choice_logo_shape:hover {
+    animation: bounce;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+div.choice:hover > a > .choice_logo_shape {
+    animation-play-state: paused;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+}
+
 
 .choice {
     display: flex;
@@ -120,7 +117,21 @@ a {
     color: var(--pink);
 }
 
+a {
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+    z-index: 1;
+    animation-iteration-count: 0;
+}
 
+.screen {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    z-index: 2;
+}
 
 .choice_logo_shape {
     background-color: white;
@@ -132,8 +143,8 @@ a {
     border-radius: 100%;
     display: flex;
     align-items:center;
-    justify-content: center;
-    animation-play-state: paused;
+    justify-content: center;;
+
 }
 
 .choice_logo_text {
@@ -142,6 +153,7 @@ a {
     /* border: 2px;
     border-style: solid; */
 }
+
 .choice_text {
     color: #FFF;
     font-size: 24px;
@@ -154,23 +166,51 @@ a {
 
 footer {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     bottom: 0px;
     right: 20px;
     background-color: white;
     padding: 10px 10px 10px 10px;
-    text-align: right;
+    text-align: center;
     align-content: right;
+    justify-content: flex-start;
     border-radius: 20px;
     margin: 10px;
     margin-bottom: 15px;
     z-index: 3;
-}
-a#footer {
     font-family: 'Fredoka One', cursive;
     text-decoration:none;
     color: var(--blue);
+    overflow: hidden;
 }
-a#footer:hover {
+footer p {
+    color: purple;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+footer a {
+    vertical-align: top;
+    height: 0px;
+    visibility:hidden;
+}
+footer a:hover {
     color: var(--pink);
 }
+footer:hover {
+    height:6.5rem;
+    animation: resize;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+footer:hover > a{
+    height: fit-content;
+    visibility:visible;
+    margin-top: 8px;
+}
 
+@keyframes resize {
+    0% {height:20px;}
+    100% {height:6.5rem;}
+}
