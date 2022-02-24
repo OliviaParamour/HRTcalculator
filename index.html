@@ -1,57 +1,60 @@
-<head>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <title>HRT Cost Calculator for Singapore</title>
-    <meta name="description" content="A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <title>HRT Cost Calculator for Singapore</title>
+        <meta name="description" content="A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://oliviaparamour.github.io/HRTcalculator/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="HRT Cost Calculator for Singapore">
-    <meta property="og:description" content="A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
-    <meta property="og:image" content="https://i.postimg.cc/VsdRJDqC/og-preview.jpg">
+        <!-- Facebook Meta Tags -->
+        <meta property="og:url" content="https://oliviaparamour.github.io/HRTcalculator/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="HRT Cost Calculator for Singapore">
+        <meta property="og:description" content="A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
+        <meta property="og:image" content="https://i.postimg.cc/VsdRJDqC/og-preview.jpg">
 
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="oliviaparamour.github.io">
-    <meta property="twitter:url" content="https://oliviaparamour.github.io/HRTcalculator/">
-    <meta name="twitter:title" content="HRT Cost Calculator for Singapore">
-    <meta name="twitter:description" content="A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
-    <meta name="twitter:image" content="https://i.postimg.cc/Y9jCBW1F/twitter-preview.png">
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="oliviaparamour.github.io">
+        <meta property="twitter:url" content="https://oliviaparamour.github.io/HRTcalculator/">
+        <meta name="twitter:title" content="HRT Cost Calculator for Singapore">
+        <meta name="twitter:description" content="A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
+        <meta name="twitter:image" content="https://i.postimg.cc/Y9jCBW1F/twitter-preview.png">
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script type="text/javascript" src="script.js"></script>
-</head>
-<body>
-    <div class="starter" onClick="load_page()" >Start</div>
-    <H1 class="instructions animate__bounce animate__repeat-2">Choose your Hormones!</H1>
-    <div class="choices">
-        <div id="estrogen" class="choice">
-            <a href="#" >
-                <div class = "screen"></div>
-                <div class="choice_logo_shape">
-                    <!-- animate__animated animate__bounce animate__infinite  -->
-                    <H2 class="choice_logo_text">E</H2>
-                </div>
-                <p class="choice_text">ESTROGEN BASED HRT</p>
-            </a>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+        <div class="starter" onClick="load_page()" >Start</div>
+        <H1 id="instructions" class="animate__bounce animate__repeat-2">Choose your Hormones!</H1>
+        <div class="choices">
+            <div id="estrogen" class="choice">
+                <a href="#" >
+                    <div onmouseover="select_option()" class="screen"></div>
+                    <div class="choice_logo_shape">
+                        <!-- animate__animated animate__bounce animate__infinite  -->
+                        <H2 class="choice_logo_text">E</H2>
+                    </div>
+                    <p class="choice_text">ESTROGEN BASED HRT</p>
+                </a>
+            </div>
+            <div id="testosterone" class="choice">
+                <a href="#2">
+                    <div onmouseover="select_option()" class="screen"></div>
+                    <div class="choice_logo_shape">
+                        <H2 class="choice_logo_text">T</H2>
+                    </div>
+                    <p class="choice_text">TESTOSTERONE BASED HRT</p>
+                </a>
+            </div>
         </div>
-        <div id="testosterone" class="choice">
-            <a href="#2">
-                <div class = "screen"></div>
-                <div class="choice_logo_shape">
-                    <H2 class="choice_logo_text">T</H2>
-                </div>
-                <p class="choice_text">TESTOSTERONE BASED HRT</p>
-            </a>
-        </div>
-    </div>
-    <button id="mute" type="button" onclick="toggle_mute()">Mute</button>
-    <footer>
-        <p>Olivia Paramour</p>
-        <a class="linktree" href="https://linktr.ee/Oliviaparamour"  target="_blank">linktree</a>
-        <a class="email" href="mailto:oliviaparamour@gmail.com" target="_blank">email</a>
-        <a class="sound" href="https://www.patreon.com/kenney/" target="_blank">sound by Kenny</a>
-        <a class="sound" href="https://www.FesliyanStudios.com" target="_blank">Fesliyan Studios</a>
-    </footer>
-</body>
+        <button id="mute" type="button" onclick="toggle_mute()">Mute</button>
+        <footer>
+            <p>Olivia Paramour</p>
+            <a class="linktree" href="https://linktr.ee/Oliviaparamour"  target="_blank">linktree</a>
+            <a class="email" href="mailto:oliviaparamour@gmail.com" target="_blank">email</a>
+            <a class="sound" href="https://www.patreon.com/kenney/" target="_blank">sound by Kenny</a>
+            <a class="sound" href="https://www.FesliyanStudios.com" target="_blank">Fesliyan Studios</a>
+        </footer>
+    </body>
+</html>

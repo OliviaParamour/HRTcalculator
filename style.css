@@ -40,17 +40,14 @@ body {
     background-color: white;
 }
 
-.instructions {
+#instructions {
     position: absolute;
     top: max(42vh, 340px);
-    font-size: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+    margin-left: -200px;
+    left: 50%;
     text-align: center;
     padding: 10px 20px 10px 20px;
-    width:fit-content;
+    width:400px;
     font-family: 'Varela Round', sans-serif;
     text-transform: capitalize;
     color: #FFF;
@@ -60,6 +57,16 @@ body {
     z-index: 2;
     animation: jello;
     animation-duration: 1s;
+}
+
+
+@keyframes move_left {
+    0% {left:50%;background-color: red;}
+    100% {left:25%;}
+}
+@keyframes move_right {
+    0% {left:50%;}
+    100% {left:75%;}
 }
 
 .choices {
@@ -103,7 +110,7 @@ div.choice:hover > a > .choice_logo_shape {
 .choice {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
     width:100%;
     justify-content: flex-start;
 }
@@ -186,6 +193,40 @@ footer {
     overflow: hidden;
 }
 
+footer p {
+    color: var(--pink);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+footer a {
+    vertical-align: top;
+    height: 0px;
+    visibility:hidden;
+}
+footer a:hover {
+    color: var(--pink);
+}
+footer:hover {
+    bottom:10px;
+    right:30px;
+    height:8.5rem;
+    animation: open_links;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    filter: drop-shadow(10px 10px 0px #4444dd);
+}
+footer:hover > a{
+    height: fit-content;
+    visibility:visible;
+    margin-top: 8px;
+}
+
+@keyframes open_links {
+    0% {height:20px;bottom:0px;right:20px;filter: drop-shadow(0px 0px 0px #4444dd);}
+    100% {height:8.5rem;bottom:10px;right:30px;filter: drop-shadow(10px 10px 0px #4444dd);}
+}
+
 #mute {
     position: absolute;
     font-size: 24px;
@@ -199,38 +240,23 @@ footer {
     z-index: 4;
     border-color: var(--darkblue);
     border-style: solid;
+    box-sizing: border-box;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 15px;
     text-align: right;
 }
 
-footer p {
-    color: purple;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-footer a {
-    vertical-align: top;
-    height: 0px;
-    visibility:hidden;
-}
-footer a:hover {
-    color: var(--pink);
-}
-footer:hover {
-    height:8.5rem;
-    animation: resize;
-    animation-duration: 1.5s;
-    animation-iteration-count: 1;
-    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-footer:hover > a{
-    height: fit-content;
-    visibility:visible;
-    margin-top: 8px;
+#mute:hover {
+    background-color: var(--pink);
+    border-style:hidden;
+    padding: 10px 12px;
+
+    color: #fff;
+    /* border-color: #fff; */
+    filter: drop-shadow(0px 10px 0px #4444dd);
 }
 
-@keyframes resize {
-    0% {height:20px;}
-    100% {height:8.5rem;}
+#mute:active {
+    top: 10px;
+    filter: none;
 }
