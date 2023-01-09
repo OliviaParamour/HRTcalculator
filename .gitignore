@@ -1,3 +1,11 @@
 launch.json
 test*
 Audio/*
+old/*
+*.ogg
+*.wav
+*.mp3
+template.html
+widget.html
+.vscode/*
+img/*
