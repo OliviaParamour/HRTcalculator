@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@keyframes squeeze {
+    0% {transform: scaleX(1.5), scaleY(2);}
+    10% {transform: scaleX(1.4), scaleY(2);}
+    11% {transform: scaleX(1.5), scaleY(2);}
+    20% {transform: rotate(-3deg);}
+    30% {transform: rotate(30deg);}
+    40% {transform: rotate(-18deg);}
+    50% {transform: rotate(18deg);}
+    60% {transform: rotate(-8deg);}
+    70% {transform: rotate(8deg);}
+    80% {transform: rotate(-3deg);}
+    90% {transform: rotate(3deg);}
+    100% {transform: rotate(0deg), scaleX(1.5), scaleY(2);}
+}
+
+@keyframes clicked {
+    from {transform: scale(1);}
+    to {transform: scale(0.9);}
+}

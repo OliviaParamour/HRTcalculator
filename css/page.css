@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+.page {
+    height: 100%;
+    box-sizing: content-box;
+    scroll-snap-align: start;
+    display: grid;
+    grid-template:
+                "q h e" 1fr
+                "b c d" 3fr
+                "f f f" 1fr / 1fr 2fr 1fr;
+}
+
+header, #summary-page {
+    background-color: var(--blue);
+}
+
+.options-container {
+    grid-area: c;
+}
+
+/* Page 1 Age select */
+#age-select {
+  font: 5em var(--main-font);
+  border: none;
+  width: 3ch;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: black;
+  background: rgba(255, 255, 255, 0.1);
+  caret-color: red;
+  border-radius: 20px;
+}
+
+#age-select::placeholder {
+  opacity: 1;
+  color:rgba(0,0,0,0.3);
+}
+
+#age-select:invalid {
+  background: red;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Page 2 HRT Choice */
+#hrt-select-page {
+    justify-content: center;
+    align-items: center;
+}
+
+#hrt-select-page>h2 {
+    grid-area: h;
+    z-index: 1;
+    border-radius: 2em;
+    padding: 0.5em 0;
+    background-color: white;
+    align-self: flex-end;
+}
+
+#hrt-select-page>.back-btn {
+    margin: 2em;
+    place-self: flex-start;
+    grid-area: q;
+}
+
+#hrt-select-page>.back-btn>.btn-graphics {
+    box-shadow: 0px 0.375em 0px 0px var(--darkpink);
+}
+
+#hrt-select-page>.back-btn:active>.btn-graphics {
+    box-shadow: unset;
+}
+
+/* Page 3 Choose Hormones */
+
+#medicine-select-page > .options-container {
+    grid-area: 2 / 1 / 3 / -1;
+    margin: 0em 2em;
+}
+
+.gallery-options {
+    gap: 2em;
+    /* width: 40em; */
+    overflow: auto hidden;
+    /* justify-content: center; */
+}
+.medicine-type {
+    width: 100%;
+    text-align: center;
+}
+
+/* Page 4 Choose Hospital */
+/* Page 5 Summary Page */
+

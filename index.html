@@ -1,60 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-        <title>WIP: HRT Cost Calculator for Singapore</title>
-        <meta name="description" content="A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
 
-        <!-- Facebook Meta Tags -->
-        <meta property="og:url" content="https://oliviaparamour.github.io/HRTcalculator/">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="WIP HRT Cost Calculator for Singapore">
-        <meta property="og:description" content="Under construction: A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
-        <meta property="og:image" content="https://i.postimg.cc/VsdRJDqC/og-preview.jpg">
+<head>
+  <!--
+      This is the page head - it contains info the browser uses to display the page
+      You won't see what's in the head in the page
+      Scroll down to the body element for the page content
+    -->
 
-        <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="oliviaparamour.github.io">
-        <meta property="twitter:url" content="https://oliviaparamour.github.io/HRTcalculator/">
-        <meta name="twitter:title" content="WIP HRT Cost Calculator for Singapore">
-        <meta name="twitter:description" content="Under construction: A guided calculator that tells you how much HRT will cost for you in Singapore through the public healthcare system.">
-        <meta name="twitter:image" content="https://i.postimg.cc/Y9jCBW1F/twitter-preview.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="https://cdn.glitch.global/e41cbd5e-2d0c-4097-956a-79ca94cd4f3b/favicon.ico" />
 
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <script type="text/javascript" src="script.js"></script>
-    </head>
-    <body>
-        <div class="starter" onClick="load_page()" >Start</div>
-        <H1 id="instructions" class="animate__bounce animate__repeat-2">Choose your Hormones!</H1>
-        <div class="choices">
-            <div id="estrogen" class="choice">
-                <a href="#" >
-                    <div onmouseover="select_option()" class="screen"></div>
-                    <div class="choice_logo_shape">
-                        <!-- animate__animated animate__bounce animate__infinite  -->
-                        <H2 class="choice_logo_text">E</H2>
-                    </div>
-                    <p class="choice_text">ESTROGEN BASED HRT</p>
-                </a>
-            </div>
-            <div id="testosterone" class="choice">
-                <a href="#2">
-                    <div onmouseover="select_option()" class="screen"></div>
-                    <div class="choice_logo_shape">
-                        <H2 class="choice_logo_text">T</H2>
-                    </div>
-                    <p class="choice_text">TESTOSTERONE BASED HRT</p>
-                </a>
-            </div>
+  <!--
+      This is an HTML comment
+      You can write text in a comment and the content won't be visible in the page
+    -->
+
+  <title>HRT Cost Calculator WIP</title>
+
+  <!-- Meta tags for SEO and social sharing -->
+  <link rel="canonical" href="https://glitch-hello-website.glitch.me/" />
+  <meta name="description"
+    content="A webapp that calculates the cost of your HRT in Singapore through the public healthcare system. Work in Progress." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="HRT Cost Calculator WIP" />
+  <!--     <meta property="og:type" content="website" /> -->
+  <meta property="og:url" content="https://hrt-calculator.glitch.me/" />
+  <meta property="og:description"
+    content="A webapp that calculates the cost of your HRT in Singapore through the public healthcare system. Work in Progress." />
+  <meta property="og:image" content="https://cdn.glitch.global/e41cbd5e-2d0c-4097-956a-79ca94cd4f3b/preview.png" />
+  <meta name="og:image:alt"
+    content="The image of the first screen of the HRT Calculator WebApp. Shows the name of the app a short description and a start button over a blue background" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Import the webpage's stylesheet -->
+  <link rel="stylesheet" href="./css/animation.css" />
+  <link rel="stylesheet" href="./css/core.css" />
+  <link rel="stylesheet" href="./css/buttons.css" />
+  <link rel="stylesheet" href="./css/page.css" />
+  <link rel="stylesheet" href="./css/widget.css" />
+
+  <!-- Import the webpage's javascript file -->
+  <script type="module" src="./js/script.js"></script>
+</head>
+
+<body>
+  <div id="smooth-scroll">
+  <header id="start-page">
+    <nav><a href="widget.html">Widget Test</a></nav>
+    <div class="start-container flex column">
+      <h1>HRT Cost Calculator</h1>
+      <p>Providing you the cost of HRT as easily as possible</p>
+      <a class="btn nav-btn next-btn" href="#main">
+        <div class="btn-graphics">Start</div>
+      </a>
+    </div>
+  </header>
+  <main id="main">
+    <progress aria-label="calculator input progress" id="progress" max="100" min="0" value="0"></progress>
+    <section class="page" id="age-select-page">
+      <div class="flex column options-container" id="a">
+        <h2>First, let's start with your age</h2>
+        <label for="age">How old are you?</label>
+        <input type="number" name="age" min="13" max="120" id="age-select" placeholder="18" aria-label="your age">
+        <a class="btn nav-btn next-btn" href="#hrt-select-page">
+          <div class="btn-graphics">Next</div>
+        </a>
+      </div>
+    </section>
+    <section class="page" id="hrt-select-page">
+      <h2>Choose your HRT</h2>
+      <a class="btn nav-btn back-btn" href="#age-select-page">
+        <div class="btn-graphics">Back</div>
+      </a>
+      <div id="hrt-container">
+        <a class="btn hrt-btn flex column" id="choice-testosterone" href="#medicine-select-page">
+          <div class="hrt-btn-circle">
+            <p id="testosterone" name="Testosterone">T</p>
+          </div>
+        </a>
+        <a class="btn hrt-btn flex column" id="choice-estrogen" href="#medicine-select-page">
+          <div class="hrt-btn-circle">
+            <p id="estrogen" name="Estrogen">E</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section class="page flex column" id="medicine-select-page">
+      <div class="options-container">
+        <h2>Choose your medicine</h2>
+        <section class="gallery-options flex"></section>
+      </div>
+      <div class="page-navigation flex">
+        <a class="btn nav-btn back-btn" href="#hrt-select-page">
+          <div class="btn-graphics">Back</div>
+        </a>
+        <a class="btn nav-btn next-btn" href="#summary-page">
+          <div class="btn-graphics">Next</div>
+        </a>
+      </div>
+    </section>
+    <section class="page flex column" id="summary-page">
+      <div class="options-container">
+        <h2>Summary of Costs</h2>
+        <a class="btn nav-btn" id="restart" href="#start-page">
+          <div class="btn-graphics">Download results</div>
+        </a>
+        <div class="flex" id="nav-container">
+          <a class="btn nav-btn" href="#age-select-page">
+            <div class="btn-graphics">Change Age</div>
+          </a>
+          <a class="btn nav-btn" href="#hrt-select-page">
+            <div class="btn-graphics">Change HRT Type</div>
+          </a>
+          <a class="btn nav-btn" href="#medicine-select-page">
+            <div class="btn-graphics">Change Medicine</div>
+          </a>
         </div>
-        <button id="mute" type="button" onclick="toggle_mute()">Mute</button>
-        <footer>
-            <p>Olivia Paramour</p>
-            <a class="linktree" href="https://linktr.ee/Oliviaparamour"  target="_blank">linktree</a>
-            <a class="email" href="mailto:oliviaparamour@gmail.com" target="_blank">email</a>
-            <a class="sound" href="https://www.patreon.com/kenney/" target="_blank">sound by Kenny</a>
-            <a class="sound" href="https://www.FesliyanStudios.com" target="_blank">Fesliyan Studios</a>
-        </footer>
-    </body>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Created by <a href="https://linktr.ee/Oliviaparamour">Olivia Paramour</a> on <time
+        datetime="2023-01-06T14:00:00+0800">06-Jan-23</time></p>
+    <a href="https://www.flaticon.com/free-icons/syringe" title="syringe icons">Syringe icons created by Those Icons - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/pill" title="pill icons">Pill icons created by Freepik - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/patch" title="patch icons">Patch icons created by Freepik - Flaticon</a>
+  </footer>
+  <template id="hospital-option-template">
+    <label class="hospital-option" for="type-1-option-1-hospital-1">
+      <input type="radio" name="type1option1hospital" id="type-1-option-1-hospital-1">
+      <h6>Hospital Name</h6>
+      <p>$4.00</p>
+    </label>
+  </template>
+  <template id="medicine-option-template">
+    <label class="medicine-choice" for="type-1-option-1">
+      <img class="medicine-type-logo"/>
+      <input type="radio" name="antiAndrogen" id="type-1-option-1">
+      <h4>Androcur</h4>
+      <p>Cyproterone Acetate</p>
+      <section class="medicine-info">
+        <h5>Information</h5>
+        <p>Sold in: 10 tabs per strip</p>
+        <p>Size of each tab: 50mg</p>
+      </section>
+      <section class="medicine-dosage flex column">
+        <h5>Choose Dosage</h5>
+        <form class="flex column" oninput="output.value=parseFloat(value.value).toFixed(1);">
+          <div class="flex">
+            <label class="flex" for="dose-1">Dose:&nbsp;</label>
+            <output name="output" for="value">1</output>
+            <p>&nbsp;unit</p>
+          </div>
+          <input type="range" min="0" max="100" step="10" value="10" name="value" id="dose-1">
+        </form>
+        <form class="flex column" oninput="output.value=parseInt(Value.value);">
+          <div class="flex">
+            <label class="flex" for="interval-1">Days between dose:&nbsp;</label>
+            <output name="output" for="Value">1</output>
+            <p>&nbsp;days</p>
+          </div>
+          <input type="range" min="1" max="7" step="1" value="1" name="Value" id="interval-1">
+        </form>
+        <section class="hospital-options">
+          <h6>Choose Hospital</h6>
+          <div class="hospital-options-container flex"></div>
+        </section>
+      </section>
+    </label>
+  </template>
+  <template id="hrt-option-template">
+    <section class="medicine-type">
+      <h3>Hormone</h3>
+      <div class="flex">
+      </div>
+    </section>
+  </template>
+
+  </div>
+</body>
+
 </html>

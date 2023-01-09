@@ -1,0 +1,122 @@
+@charset "utf-8";
+
+.btn {
+    background-color: unset;
+    border: unset;
+    color: unset;
+    padding: unset;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.nav-btn {
+    margin: 1em 1em 1em 0;
+    border-radius: 35px;
+    max-width: 20ch;
+}
+
+.btn-graphics {
+    position: relative;
+    padding: 0.25em 1em 0.25em 1em;
+    margin: 0 0 0.375em 0;
+    background-color: var(--blue);
+    width: inherit;
+    border: 0.375em solid var(--pink);
+    border-radius: 2em;
+    box-shadow: 0px 0.375em 0px 0px var(--darkpink), 0px 0.5em 20px -5px rgba(41, 1, 31, 0.7);
+
+    font: 1.5rem var(--main-font);
+    color: white;
+}
+
+.btn:active > .btn-graphics {
+    top:0.375em;
+    box-shadow: unset;
+}
+
+.next-btn>.btn-graphics::after {
+    content:">";
+    margin-left: 0.5ch;
+    margin-right:-0.5ch;
+}
+
+.back-btn>.btn-graphics::before {
+    content:"<";
+    margin-right: 0.5ch;
+    margin-left:-0.5ch;
+}
+
+.hrt-btn {
+    height: 100%;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+#choice-testosterone {
+    background-color: var(--blue);
+    color: var(--blue);
+}
+
+#choice-estrogen {
+    background-color: var(--pink);
+    color: var(--pink);
+}
+
+.hrt-btn-circle {
+    font-size: 4rem;
+    display: flex;
+    background-color: white;
+    border-radius: 100%;
+    margin: 0 auto 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2em;
+}
+
+.hrt-btn-circle>p {
+    margin: 0;
+    text-align: center;
+}
+
+#hrt-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    grid-area: 1 / 1 / -1 / -1;
+}
+
+#hrt-container:hover>#choice-testosterone {
+    background-color: var(--darkblue);
+    color: var(--darkblue);
+}
+
+#hrt-container:hover>#choice-estrogen {
+    background-color: var(--darkpink);
+    color: var(--darkpink);
+}
+
+#hrt-container:hover>.hrt-btn>.hrt-btn-circle {
+    background-color: hsla(0, 0%, 100%, 0.55)
+}
+
+#hrt-container>#choice-testosterone:hover {
+    background-color: var(--blue);
+    color: var(--blue);
+}
+
+#hrt-container>#choice-estrogen:hover {
+    background-color: var(--pink);
+    color: var(--pink);
+}
+
+#hrt-container>.hrt-btn:hover>.hrt-btn-circle {
+    background-color: white;
+    transform: scale(1.5);
+    transition: transform 0.6s ease-in-out;
+}
+
+.hrt-btn:active>.hrt-btn-circle {
+    /* transform: scale(1.5); */
+    animation: squeeze 0.6s ease-in-out;
+}

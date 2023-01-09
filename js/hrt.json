@@ -1,0 +1,458 @@
+{
+    "hormones": {
+        "estrogenBased": {
+            "antiAndrogen": {
+                "string": "Anti-Androgen",
+                "meds": [
+                    {
+                        "brand": "Androcur",
+                        "activeIngredient": "Cyproterone Acetate",
+                        "sources": ["TTSH"],
+                        "type": "pills",
+                        "size": 50,
+                        "unit": "mg",
+                        "dose": 0.25,
+                        "interval": 1
+                    },
+                    {
+                        "brand": "Uractonum",
+                        "activeIngredient": "Spironolactone",
+                        "sources": ["TTSH"],
+                        "type": "pills",
+                        "size": 25,
+                        "unit": "mg",
+                        "dose": 8,
+                        "interval": 1
+                    }
+                ]
+            },
+            "estrogen": {
+                "string": "Estrogen",
+                "meds": [
+                    {
+                        "brand": "Estromon 100",
+                        "activeIngredient": "Estradiol",
+                        "sources": ["TTSH"],
+                        "type": "patches",
+                        "size": 100,
+                        "unit": "mcg",
+                        "dose": 2,
+                        "interval": 3.5
+                    },
+                    {
+                        "brand": "Estromon 50",
+                        "activeIngredient": "Estradiol",
+                        "sources": ["TTSH"],
+                        "type": "patches",
+                        "size": 50,
+                        "unit": "mcg",
+                        "dose": 2,
+                        "interval": 3.5
+                    },
+                    {
+                        "brand": "Estrofem",
+                        "activeIngredient": "Estradiol",
+                        "sources": ["TTSH"],
+                        "type": "pills",
+                        "size": 2,
+                        "unit": "mg",
+                        "dose": 3,
+                        "interval": 1
+                    },
+                    {
+                        "brand": "Progynova",
+                        "activeIngredient": "Estradiol Valerate",
+                        "sources": ["TTSH"],
+                        "type": "pills",
+                        "size": 2,
+                        "unit": "mg",
+                        "dose": 4,
+                        "interval": 1,
+                        "price": 0.54
+                    }
+                ]
+            }
+        },
+        "testosteroneBased": {
+            "testosterone": {
+                "string": "Testosterone",
+                "meds": [
+                    {
+                        "brand": "Depo-T",
+                        "activeIngredient":"Testosterone Cypionate",
+                        "sources": ["TTSH", "CGH"],
+                        "type": "injection",
+                        "size": 1,
+                        "unit": "g/10ml",
+                        "dose": 0.3,
+                        "interval": 28
+                    },
+                    {
+                        "brand": "Sustanon 250",
+                        "activeIngredient": "Testosterone propionate/testosterone phenylpropionate/testosterone isocaproate/testosterone decanoate",
+                        "sources": ["NUH"],
+                        "type": "injection",
+                        "size": 250,
+                        "unit": "mg/1ml",
+                        "dose": 1,
+                        "interval": 21
+                    },
+                    {
+                        "brand": "Nebido",
+                        "activeIngredient": "Testosterone undecanoate",
+                        "sources": ["TTSH", "NUH"],
+                        "type": "injection",
+                        "size": 1,
+                        "unit": "g/4ml",
+                        "dose": 0.3,
+                        "interval": 84
+                    }
+                ]
+            }
+        }
+    },
+
+    "hospitals": {
+        "NUH": {
+            "properName": "National University Hospital",
+            "zone": "Unknown",
+            "hrt": [
+                {
+                    "name": "Testosterone propionate/testosterone phenylpropionate/testosterone isocaproate/testosterone decanoate",
+                    "brand": "Sustanon 250",
+                    "price": 157.32
+                }
+            ],
+            "bloodTests": [
+                {
+                    "name": "ALT/ALB/AST/ALP/LD/TBIL",
+                    "price": 52.4,
+                    "combines": [
+                        "Alanine Amino Transferase (ALT)",
+                        "Albumin",
+                        "Aspartate Transaminase (AST)",
+                        "Alkaline Phosphate Serum (ALP)",
+                        "Lactate Dehydrogenase",
+                        "Bilirubin, Total (TBIL)"
+                    ]
+                },
+                {
+                    "name": "Renal Panel (K,NA,CRE)/Glucose/Urea",
+                    "price": 48.5,
+                    "combines": [
+                        "Renal Panel (K,NA,CRE)",
+                        "Glucose",
+                        "Urea"
+                    ]
+                },
+                {
+                    "name": "FSH/LH/Estrogen/Prolactin/Sex Horm Bind Globul/Free Androgen Index",
+                    "price": 103.62,
+                    "combines": [
+                        "Follicular Stimulating Hormone (FSH)",
+                        "Luteinizing Hormone",
+                        "Estradiol",
+                        "Prolactin",
+                        "Sex Horm Bind Globul",
+                        "Free Androgen Index"
+                    ]
+                },
+                {
+                    "name": "Thyroid Panel#1 (TSH & FT4)",
+                    "price": 40.0,
+                    "target": "AFAB"
+                }
+            ],
+            "appointments" : []
+        },
+        "TTSH": {
+            "properName": "Tan Tock Seng Hospital",
+            "zone": "Unknown",
+            "hrt": [
+                {
+                    "brand": "Androcur",
+                    "activeIngredient": "Cyproterone Acetate",
+                    "price": 5.00,
+                    "subsidy": false
+                },
+                {
+                    "brand": "Uractonum",
+                    "activeIngredient": "Spironolactone",
+                    "price": 0.12,
+                    "subsidy": false
+                },
+                {
+                    "brand": "Estromon 100",
+                    "activeIngredient": "Estradiol",
+                    "price": 2.86,
+                    "subsidy": false
+                },
+                {
+                    "brand": "Estromon 50",
+                    "activeIngredient": "Estradiol",
+                    "price": 1.43,
+                    "subsidy": false
+                },
+                {
+                    "brand": "Estrofem",
+                    "activeIngredient": "Estradiol",
+                    "price": 0.49,
+                    "subsidy": false
+                },
+                {
+                    "activeIngredient": "Estradiol Valerate",
+                    "brand": "Progynova",
+                    "price": 0.54,
+                    "subsidy": false
+
+                },
+                {
+                    "activeIngredient": "Testosterone Cypionate",
+                    "brand": "Depo-T",
+                    "price": 59.25,
+                    "subsidy": true
+                },
+                {
+                    "activeIngredient": "Testosterone undecanoate",
+                    "brand": "Nebido",
+                    "price": 281.00,
+                    "subsidy": false
+                }
+            ],
+            "bloodTests": [
+                    {
+                        "name": "25-OH Vit D (total)",
+                        "price": 70.60
+                    },
+                    {
+                        "name": "Alanine Amino Transferase (ALT)",
+                        "price": 9.83
+                    },
+                    {
+                        "name": "Albumin",
+                        "price": 9.83
+                    },
+                    {
+                        "name": "Aspartate Transaminase (AST)",
+                        "price": 9.83
+                    },
+                    {
+                        "name": "Alkaline Phosphate Serum (ALP)",
+                        "price": 9.83
+                    },
+                    {
+                        "name": "Bilirubin, Total (TBIL)",
+                        "price": 8.73
+                    },
+                    {
+                        "name": "Renal Panel (K,NA,CRE)",
+                        "price": 27.60
+                    },
+                    {
+                        "name": "Glucose",
+                        "price": 9.55
+                    },
+                    {
+                        "name": "Lipid Panel #1 (Chol, HDL, TRIG, LDL)",
+                        "price": 39.10
+                    },
+                    {
+                        "name": "Follicular Stimulating Hormone (FSH)",
+                        "price": 22.04
+                    },
+                    {
+                        "name": "Luteinizing Hormone",
+                        "price": 22.04
+                    },
+                    {
+                        "name": "Estradiol",
+                        "price": 21.79
+                    },
+                    {
+                        "name": "Calcium",
+                        "price": 9.16
+                    },
+                    {
+                        "name": "Ferritin",
+                        "price": 37.01,
+                        "target": "AFAB"
+                    },
+                    {
+                        "name": "Full Blood Count (Hemogram, DC, Platlet)",
+                        "price": 24.78
+                    },
+                    {
+                        "name": "Prolactin",
+                        "price": 22.88
+                    },
+                    {
+                        "name": "Iron",
+                        "price": 12.01,
+                        "target": "AFAB"
+                    },
+                    {
+                        "name": "Testosterone",
+                        "price": 22.04
+                    },
+                    {
+                        "name": "Transferrin",
+                        "price": 22.25,
+                        "target": "AFAB"
+                    },
+                    {
+                        "name": "Thalassiaemia Screen (HB Electrophoresis)",
+                        "price": 100,
+                        "target": "AFAB"
+                    },
+                    {
+                        "name": "Thyroid Panel #1  (TSH & FT4)",
+                        "price": 22.04,
+                        "target": "AFAB"
+                    }
+            ],
+            "appointments" : []
+        },
+        "SGH": {
+            "properName": "Singapore General Hospital",
+            "hrt": [],
+            "bloodTests": [
+                {
+                    "name": "Renal Panel (K,NA,CRE)",
+                    "price": 71.80
+                },
+                {
+                    "name": "Estradiol",
+                    "price": 50.10
+                },
+                {
+                    "name": "Full Blood Count (Hemogram, DC, Platlet)",
+                    "price": 31.00
+                },
+                {
+                    "name": "Testosterone",
+                    "price": 63.20
+                }
+            ],
+            "appointments" : []
+        },
+        "CGH": {
+            "properName": "Changi General Hospital",
+            "hrt": [
+                {
+                    "name": "Testosterone Cypionate",
+                    "brand": "Depo-T",
+                    "price": 58.65,
+                    "subsidy": true
+                },
+                {
+                    "name": "Testosterone undecanoate",
+                    "brand": "Nebido",
+                    "price": 280.37,
+                    "subsidy": false
+                }
+            ],
+            "bloodTests": [
+                {
+                    "name": "Alanine Amino Transferase (ALT)",
+                    "price": 14.00
+                },
+                {
+                    "name": "Albumin",
+                    "price": 14.00
+                },
+                {
+                    "name": "Aspartate Transaminase (AST)",
+                    "price": 14.00
+                },
+                {
+                    "name": "Alkaline Phosphate Serum (ALP)",
+                    "price": 17.00
+                },
+                {
+                    "name": "Bilirubin, Total (TBIL)",
+                    "price": 12.00
+                },
+                {
+                    "name": "Renal Panel (K,NA,CRE)",
+                    "price": 28.00
+                },
+                {
+                    "name": "Bicarbonate",
+                    "price": 7.00
+                },
+                {
+                    "name": "Chloride",
+                    "price": 9.00
+                },
+                {
+                    "name": "Glucose",
+                    "price": 7.50
+                },
+                {
+                    "name": "Urea",
+                    "price": 8.00
+                },
+                {
+                    "name": "Lipid Panel #1 (Chol, HDL, TRIG, LDL)",
+                    "price": 38.60
+                },
+                {
+                    "name": "Follicular Stimulating Hormone (FSH)",
+                    "price": 33.00
+                },
+                {
+                    "name": "Luteinizing Hormone",
+                    "price": 33.00
+                },
+                {
+                    "name": "Estradiol",
+                    "price": 35.00
+                },
+                {
+                    "name": "Full Blood Count (Hemogram, DC, Platlet)",
+                    "price": 24.78
+                },
+                {
+                    "name": "Gamma-Glutamy Transferase (GGT)",
+                    "price": 12.50
+                },
+                {
+                    "name": "Protein Total (TP)",
+                    "price": 14.50
+                },
+                {
+                    "name": "Testosterone",
+                    "price": 31.00
+                }
+            ],
+            "appointments" : []
+        }
+    },
+
+    "selfInjectionKits": [
+        {
+            "name":"Alcohol Swabs 200s",
+            "quantity": 1,
+            "price": 6.40
+        },
+        {
+            "name":"Needle 19G 100s",
+            "quantity": 1,
+            "price": 5.35
+        },
+        {
+            "name":"Needle 23G 100s",
+            "quantity": 1,
+            "price": 5.35
+        },
+        {
+            "name":"Syringe 1ml",
+            "quantity": 100,
+            "price": 21.40
+        }
+    ],
+
+    "flow": [
+        "age", "hormones", "type", "hospital", "summary"
+    ]
+}

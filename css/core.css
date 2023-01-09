@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Fredoka+One&display=swap&family=Varela+Round&display=swap");
+
+:is(body, a, h1, h2, h3, h4, h5, h6, p, li, ul, ol) {
+    margin: 0;
+}
+
+body {
+    --main-font: "Varela Round", sans-serif;
+    --lightpink: #ffeef2;
+    --pink: #F5A9B8;
+    --darkpink: #c6314f;
+    --blue: #5BCEFA;
+    --grayout: rgba(0, 0, 0, 0.7);
+    --darkblue: #23647e;
+    --lightblue: #ddf7fc;
+    text-align: center;
+    height: 100vh;
+    /* scroll-behavior: smooth; */
+    box-sizing: content-box;
+    font-family: var(--main-font);
+    background-color: lightcoral;
+}
+
+#smooth-scroll {
+  overflow:hidden hidden;
+  height:100vh;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+a {
+  text-decoration:none;
+  color: white;
+}
+
+p, a {
+    font-family: var(--main-font);
+}
+
+footer>p,footer>p>a {
+  text-transform: uppercase;
+}
+
+
+header {
+    background-color: var(--blue);
+    height: 100vh;
+    display: grid;
+    grid-template:
+                "t t t" 1fr
+                "a s b" 1fr
+                "c c c" 1fr / 1fr 1fr 1fr;
+    box-sizing: content-box;
+    scroll-snap-align: start;
+}
+
+.start-container {
+    border: 2px solid white;
+    border-radius: 25px;
+    width: fit-content;
+    padding: 3em 5em 3em 5em;
+    grid-area: s;
+    justify-content: space-between;
+    max-height: 20em;
+}
+
+main {
+    padding: 0em;
+    box-sizing: content-box;
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
+    overflow: hidden auto;
+    scroll-snap-type: y mandatory;
+
+}
+
+#progress {
+  border-radius: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+#progress::-webkit-progress-bar, #progress::-moz-progress-bar {
+  background-color: yellow;
+  border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+  background-color: lime;
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+    align-items: center;
+}
+
+.pink {
+    background-color: var(--pink);
+}
+
+.blue {
+    background-color: var(--blue);
+}
+
+footer, nav {
+    font-size: 0.675em;
+    position:fixed;
+    z-index:3;
+    top: 0;
+    padding: 1em;
+    background-color: rgba(0,0,0,0.3);
+
+}
+
+footer {
+  right: 0;
+  border-bottom-left-radius: 2em;
+}
