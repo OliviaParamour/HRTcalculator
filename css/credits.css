@@ -15,30 +15,37 @@ body {
     --lightblue: #ddf7fc;
     text-align: center;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     /* scroll-behavior: smooth; */
     box-sizing: content-box;
     font-family: var(--main-font);
     background-color: var(--blue);
 }
 
-header, main, nav {
-    padding: 1em;
+header {
+  padding: 1em;
+  /* background-color: var(--lightblue); */
+}
+
+main, nav {
+    padding: 0em 1em;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
 }
 section {
-  width: 60ch;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 h2 {
-  margin-bottom: 0.5em
+  margin:0.75em 0 0.5em 0;
 }
 
 
@@ -66,7 +73,7 @@ a {
 
 p, a {
     font-family: var(--main-font);
-  display:block;
+  /* display:block; */
 }
 
 ul {
