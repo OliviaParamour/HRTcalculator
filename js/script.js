@@ -40,7 +40,7 @@ const checkedStyle = document.styleSheets[4].cssRules[8].cssText;
 const itemRow = document.getElementById("item-row");
 const groupHeader = document.querySelector("#group-group-header")
 const itemGroupHeader = document.querySelector("#item-group-header")
-const totalData = document.getElementById("summary-total").querySelectorAll("td");
+const totalData = document.getElementById("summary-total");
 // console.log(checkedStyle)
 const ageSelect = document.getElementById("age-select");
 let age = null;
@@ -57,8 +57,15 @@ ageNextBtn.addEventListener("click", (e) => {
     }
 });
 
+let lifeTimeCheckbox = false;
+
+document.getElementById("lifetime-checkbox").addEventListener("input", (e) => {
+    lifeTimeCheckbox = e.target.checked;
+});
+
 function populateTablePrices(rows, medicine, total) {
     const times = [1, 30, 365.2425, (100-age) * 365.2425]
+    if (lifeTimeCheckbox) times.pop(3)
     console.log((100-age), times[3], medicine.price)
 
     let dailyPrice = (medicine.price * parseFloat(medicine.dose))/parseFloat(medicine.interval);
@@ -66,12 +73,11 @@ function populateTablePrices(rows, medicine, total) {
         console.log("injection");
         dailyPrice /= medicine.unitSize;
     }
+    console.log(times.length);
     console.log(dailyPrice, medicine.dose, medicine.interval);
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < times.length; i++) {
         rows[i+1].textContent = (dailyPrice * times[i]).toFixed(2);
-        // console.log(total)
         total[i+2].textContent = (dailyPrice * times[i] + parseFloat(total[i+2].textContent)).toFixed(2);
-        // console.log(rows[i].textContent);
     }
 }
 
@@ -81,19 +87,47 @@ ageSelect.addEventListener("change", (e) => {
 })
 
 medicineNextBtn.addEventListener("click", (e) => {
+    const headData = document.querySelector("#summary-table-head")
+    console.log(totalData.querySelectorAll("td").length )
+    if(lifeTimeCheckbox) {
+
+        if (headData.querySelectorAll("td").length > 5) {
+            headData.removeChild(headData.lastElementChild)
+        }
+        if (totalData.querySelectorAll("td").length > 5) {
+            totalData.removeChild(totalData.lastElementChild)
+        }
+    } else {
+        if (headData.querySelectorAll("td").length < 6) {
+            const lifeTimeHeader = document.createElement("td")
+            lifeTimeHeader.className = "align-right";
+            lifeTimeHeader.textContent = "Lifetime Cost"
+            headData.appendChild(lifeTimeHeader)
+        }
+
+        if (totalData.querySelectorAll("td").length < 6) {
+            const lifeTimeTotal = document.createElement("td")
+            lifeTimeTotal.className = "align-right";
+            totalData.appendChild(lifeTimeTotal)
+        }
+    }
+    console.log(totalData.querySelectorAll("td").length )
     while (summary.lastElementChild) {
         summary.removeChild(summary.lastElementChild);
     }
     let headerRow = groupHeader.content.cloneNode(true);
     const header = headerRow.querySelector("th");
+
     let currentRow = headerRow.querySelector("tr");
-    for (let i = 0; i < 4; i++) {
-        totalData[i+2].textContent = 0;
+    for (let i = 0; i < 4-1*lifeTimeCheckbox; i++) {
+        totalData.querySelectorAll("td")[i+2].textContent = 0;
     }
     for (const medicine of chosenMeds) {
         if (medicine != null) {
             const head = itemGroupHeader.content.cloneNode(true);
-            const row = itemRow.content.cloneNode(true);
+            if (lifeTimeCheckbox) head.colspan=4;
+            const row = itemRow.content.cloneNode(true).querySelector("tr");
+            if (lifeTimeCheckbox) row.removeChild(row.lastElementChild)
             const rowData = row.querySelectorAll("td");
             if (currentRow == null) {
                 currentRow = document.createElement("tr");
@@ -104,8 +138,9 @@ medicineNextBtn.addEventListener("click", (e) => {
 
             head.querySelector("th").textContent = medicine.hormone;
             currentRow.appendChild(head);
+            console.log(row, rowData)
             rowData[0].textContent = medicine.brand;
-            populateTablePrices(rowData, medicine, totalData);
+            populateTablePrices(rowData, medicine, totalData.querySelectorAll("td"));
             summary.appendChild(currentRow);
             currentRow = null;
             summary.appendChild(row);

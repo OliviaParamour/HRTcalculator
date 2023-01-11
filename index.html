@@ -53,6 +53,7 @@
     <div class="start-container flex column">
       <h1>HRT Cost Calculator</h1>
       <p>Providing you the cost of HRT as easily as possible</p>
+      <p>The goal of this app is to give you a summary of how much HRT will cost you over time.</p>
       <button class="btn nav-btn next-btn" onclick="window.location.href = '#main'" id="start-btn">
         <div class="btn-graphics">Start</div>
       </button>
@@ -64,11 +65,16 @@
         <h2>First, let's start with your age</h2>
         <label for="age">How old are you?</label>
         <input type="number" name="age" min="13" max="120" id="age-select" placeholder="18" aria-label="your age">
-        <p>Purpose: this value is used to calculate your lifetime cost</p>
-        <p>Data: No data is collected from this (or anywhere on the app) it all runs clientside.</p>
+        <p>Purpose: this value is used to calculate your lifetime cost. </p>
+        <p>It is an optional question. Clicking next will default the age value to 13.</p>
+        <p>Data: No data is collected from this (or anywhere on the app) as all features run clientside.</p>
+        <label for="lifetime">If you don't wish to see your calculated lifetime cost, Tick here
+          <input type="checkbox" id="lifetime-checkbox">
+        </label>
         <a class="btn nav-btn next-btn" id="age-next" href="#hrt-select-page">
           <div class="btn-graphics">Next</div>
         </a>
+
       </div>
     </section>
     <section class="page" id="hrt-select-page">
@@ -108,7 +114,7 @@
         <h2>Summary of Costs</h2>
         <table id="summary-table">
           <thead>
-            <tr>
+            <tr id="summary-table-head">
               <td></td>
               <td>Item</td>
               <td class="align-right">Daily Cost</td>
