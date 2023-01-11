@@ -77,7 +77,8 @@ td {
 }
 
 .summary-category {
-    writing-mode: vertical-lr;
+            writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
     transform: rotate(-180deg);
     text-align: center;
 }
