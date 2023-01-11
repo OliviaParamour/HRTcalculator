@@ -48,185 +48,196 @@
 
 <body>
   <div id="smooth-scroll">
-  <header id="start-page">
-    <nav><a href="index.html">Main Page</a> <a href="about.html">About</a> <a href="credits.html">Credits</a></nav>
-    <div class="start-container flex column">
-      <h1>HRT Cost Calculator</h1>
-      <p>Providing you the cost of HRT as easily as possible</p>
-      <p>The goal of this app is to give you a summary of how much HRT will cost you over time.</p>
-      <button class="btn nav-btn next-btn" onclick="window.location.href = '#main'" id="start-btn">
-        <div class="btn-graphics">Start</div>
-      </button>
-    </div>
-  </header>
-  <main id="main">
-    <section class="page" id="age-select-page">
-      <div class="flex column options-container" id="a">
-        <h2>First, let's start with your age</h2>
-        <label for="age">How old are you?</label>
-        <input type="number" name="age" min="13" max="120" id="age-select" placeholder="18" aria-label="your age">
-        <p>Purpose: this value is used to calculate your lifetime cost. </p>
-        <p>It is an optional question. Clicking next will default the age value to 13.</p>
-        <p>Data: No data is collected from this (or anywhere on the app) as all features run clientside.</p>
-        <label for="lifetime">If you don't wish to see your calculated lifetime cost, Tick here
-          <input type="checkbox" id="lifetime-checkbox">
-        </label>
-        <a class="btn nav-btn next-btn" id="age-next" href="#hrt-select-page">
-          <div class="btn-graphics">Next</div>
-        </a>
+    <header id="start-page">
+      <nav><a href="index.html">Main Page</a> <a href="about.html">About</a> <a href="credits.html">Credits</a></nav>
+      <div class="start-container flex column">
+        <h1>HRT Cost Calculator</h1>
+        <p>Providing you the cost of HRT as easily as possible</p>
+        <p>The goal of this app is to give you a summary of how much HRT will cost you over time.</p>
+        <button class="btn nav-btn next-btn" onclick="window.location.href = '#main'" id="start-btn">
+          <div class="btn-graphics">Start</div>
+        </button>
+      </div>
+    </header>
+    <main id="main">
+      <section class="page" id="age-select-page">
+        <div class="flex column options-container" id="a">
+          <h2>First, let's start with your age</h2>
+          <label for="age">How old are you?</label>
+          <input type="number" name="age" min="13" max="120" id="age-select" placeholder="18" aria-label="your age">
+          <p>Purpose: this value is used to calculate your lifetime cost. </p>
+          <p>It is an optional question. Clicking next will default the age value to 13.</p>
+          <p>Data: No data is collected from this (or anywhere on the app) as all features run clientside.</p>
+          <label for="lifetime">If you don't wish to see your calculated lifetime cost, Tick here
+            <input type="checkbox" id="lifetime-checkbox">
+          </label>
 
-      </div>
-    </section>
-    <section class="page" id="hrt-select-page">
-      <h2>Choose your HRT</h2>
-      <a class="btn nav-btn back-btn" href="#age-select-page">
-        <div class="btn-graphics">Back</div>
-      </a>
-      <div id="hrt-container">
-        <a class="btn hrt-btn flex column" id="choice-testosterone" href="#medicine-select-page">
-          <div class="hrt-btn-circle">
-            <p id="testosterone" name="Testosterone">T</p>
-          </div>
-        </a>
-        <a class="btn hrt-btn flex column" id="choice-estrogen" href="#medicine-select-page">
-          <div class="hrt-btn-circle">
-            <p id="estrogen" name="Estrogen">E</p>
-          </div>
-        </a>
-      </div>
-    </section>
-    <section class="page flex column" id="medicine-select-page">
-      <div class="options-container flex column">
-        <h2>Choose your medicine</h2>
-        <section class="gallery-options flex"></section>
-      </div>
-      <div class="page-navigation flex">
-        <a class="btn nav-btn back-btn" href="#hrt-select-page">
-          <div class="btn-graphics">Back</div>
-        </a>
-      </div>
-      <a class="btn nav-btn next-btn" id="medicine-next" href="#summary-page">
-        <div class="btn-graphics">Next</div>
-      </a>
-    </section>
-    <section class="page flex column" id="summary-page">
-      <div class="options-container flex column">
-        <h2>Summary of Costs</h2>
-        <table id="summary-table">
-          <thead>
-            <tr id="summary-table-head">
-              <td></td>
-              <td>Item</td>
-              <td class="align-right">Daily Cost</td>
-              <td class="align-right">Monthly Cost</td>
-              <td class="align-right">Yearly Cost</td>
-              <td class="align-right">Lifetime Cost</td>
-            </tr>
-        </thead>
-        <tbody id="summary-table-content">
-        </tbody>
-        <tfoot>
-          <tr id="summary-total">
-            <td></td>
-            <td>Total</td>
-            <td class="costValue">0.00</td>
-            <td class="costValue">0.00</td>
-            <td class="costValue">0.00</td>
-            <td class="costValue">0.00</td>
-          </tr>
-        </tfoot>
-        </table>
-        <p class="warning">You will have to wait until you are 18 to start HRT.</p>
-        <!-- <a class="btn nav-btn" id="restart" href="#start-page">
-          <div class="btn-graphics">Download results</div>
-        </a> -->
-        <div class="flex column" id="nav-container">
-          <a class="btn nav-btn" href="#age-select-page">
-            <div class="btn-graphics">Change Age</div>
+        </div>
+        <div class="page-navigation flex">
+          <a class="btn nav-btn back-btn" href="#start-page">
+            <div class="btn-graphics">Back</div>
           </a>
-          <a class="btn nav-btn" href="#hrt-select-page">
-            <div class="btn-graphics">Change HRT Type</div>
-          </a>
-          <a class="btn nav-btn" href="#medicine-select-page">
-            <div class="btn-graphics">Change Medicine</div>
+          <a class="btn nav-btn next-btn" id="age-next" href="#hrt-select-page">
+            <div class="btn-graphics">Next</div>
           </a>
         </div>
-      </div>
-    </section>
-    <progress aria-label="calculator input progress" id="progress" max="100" min="0" value="0"></progress>
-  </main>
-  <footer>
-    <p>Created by <a href="https://linktr.ee/Oliviaparamour">Olivia Paramour</a> on <time
-        datetime="2023-01-06T14:00:00+0800">06-Jan-23</time></p>
-    <p>
-      Version 1.0
-    </p>
-  </footer>
-  <template id="hospital-option-template">
-    <label class="hospital-option" for="type-1-option-1-hospital-1">
-      <input type="radio" name="type1option1hospital" id="type-1-option-1-hospital-1">
-      <h6>Hospital Name</h6>
-      <p>$4.00</p>
-    </label>
-  </template>
-  <template id="medicine-option-template">
-    <label class="medicine-choice" for="type-1-option-1">
-      <img class="medicine-type-logo"/>
-      <input type="radio" name="antiAndrogen" id="type-1-option-1">
-      <h4>Androcur</h4>
-      <p>Cyproterone Acetate</p>
-      <section class="medicine-info">
-        <h5>Information</h5>
-        <p class="sold-size">Sold in: 10 tabs per strip</p>
-        <p class="unit-size">Size of each tab: 50mg</p>
       </section>
-      <section class="medicine-dosage flex column">
-        <h5>Choose Dosage</h5>
-        <form class="flex column">
-          <div class="flex">
-            <label class="flex" for="dose-1">Dose:&nbsp;</label>
-            <output class="dosageOutput" name="output" for="value">1</output>
+      <section class="page" id="hrt-select-page">
+        <h2>Choose your HRT</h2>
+        <div id="hrt-container">
+          <a class="btn hrt-btn flex column" id="choice-testosterone" href="#medicine-select-page">
+            <div class="hrt-btn-circle">
+              <p id="testosterone" name="Testosterone">T</p>
+            </div>
+          </a>
+          <a class="btn hrt-btn flex column" id="choice-estrogen" href="#medicine-select-page">
+            <div class="hrt-btn-circle">
+              <p id="estrogen" name="Estrogen">E</p>
+            </div>
+          </a>
+        </div>
+        <div class="page-navigation flex">
+          <a class="btn nav-btn back-btn" href="#age-select-page">
+            <div class="btn-graphics">Back</div>
+          </a>
+        </div>
+      </section>
+      <section class="page flex column" id="medicine-select-page">
+        <div class="options-container flex column">
+          <h2>Choose your medicine</h2>
+          <section class="gallery-options flex"></section>
+        </div>
+        <div class="page-navigation flex">
+          <a class="btn nav-btn back-btn" href="#hrt-select-page">
+            <div class="btn-graphics">Back</div>
+          </a>
+          <a class="btn nav-btn next-btn" id="medicine-next" href="#summary-page">
+            <div class="btn-graphics">Next</div>
+          </a>
+        </div>
+
+      </section>
+      <section class="page flex column" id="summary-page">
+        <div class="options-container flex column">
+          <h2>Summary of Costs</h2>
+          <table id="summary-table">
+            <thead>
+              <tr id="summary-table-head">
+                <td></td>
+                <td>Item</td>
+                <td class="align-right">Daily Cost</td>
+                <td class="align-right">Monthly Cost</td>
+                <td class="align-right">Yearly Cost</td>
+                <td class="align-right">Lifetime Cost</td>
+              </tr>
+            </thead>
+            <tbody id="summary-table-content">
+            </tbody>
+            <tfoot>
+              <tr id="summary-total">
+                <td></td>
+                <td>Total</td>
+                <td class="costValue">0.00</td>
+                <td class="costValue">0.00</td>
+                <td class="costValue">0.00</td>
+                <td class="costValue">0.00</td>
+              </tr>
+            </tfoot>
+          </table>
+          <p class="warning">You will have to wait until you are 18 to start HRT.</p>
+          <!-- <a class="btn nav-btn" id="restart" href="#start-page">
+          <div class="btn-graphics">Download results</div>
+        </a> -->
+          <div class="flex column" id="nav-container">
+            <a class="btn nav-btn" href="#age-select-page">
+              <div class="btn-graphics">Change Age</div>
+            </a>
+            <a class="btn nav-btn" href="#hrt-select-page">
+              <div class="btn-graphics">Change HRT Type</div>
+            </a>
+            <a class="btn nav-btn" href="#medicine-select-page">
+              <div class="btn-graphics">Change Medicine</div>
+            </a>
           </div>
-          <input type="range" min="0" max="100" step="10" value="10" name="value" id="type-1-option-1-dose" class="dose">
-        </form>
-        <form class="flex column">
-          <div class="flex">
-            <label class="flex" for="interval-1">Days between dose:&nbsp;</label>
-            <output class="intervalOutput" name="output" for="Value">1</output>
-          </div>
-          <input type="range" min="1" max="7" step="1" value="1" name="Value" id="type-1-option-1-interval" class="interval">
-        </form>
-        <section class="hospital-options">
-          <h6>Choose Hospital</h6>
-          <div class="hospital-options-container flex"></div>
+        </div>
+      </section>
+      <progress aria-label="calculator input progress" id="progress" max="100" min="0" value="0"></progress>
+    </main>
+    <footer>
+      <p>Created by <a href="https://linktr.ee/Oliviaparamour">Olivia Paramour</a> on <time
+          datetime="2023-01-06T14:00:00+0800">06-Jan-23</time></p>
+      <p>
+        Version 1.0
+      </p>
+    </footer>
+    <template id="hospital-option-template">
+      <label class="hospital-option" for="type-1-option-1-hospital-1">
+        <input type="radio" name="type1option1hospital" id="type-1-option-1-hospital-1">
+        <div class="hospital-option-graphic">
+          <h6>Hospital Name</h6>
+          <p>$4.00</p>
+        </div>
+      </label>
+    </template>
+    <template id="medicine-option-template">
+      <article class="medicine-choice" id="type-1-option-1">
+        <img class="medicine-type-logo" />
+        <h4>Androcur</h4>
+        <p>Cyproterone Acetate</p>
+        <section class="medicine-info">
+          <h5>Information</h5>
+          <p class="sold-size">Sold in: 10 tabs per strip</p>
+          <p class="unit-size">Size of each tab: 50mg</p>
         </section>
+        <section class="medicine-dosage flex column">
+          <h5>Choose Dosage</h5>
+          <form class="flex column">
+            <div class="flex">
+              <label class="flex" for="dose-1">Dose:&nbsp;</label>
+              <output class="dosageOutput" name="output" for="value">1</output>
+            </div>
+            <input type="range" min="0" max="100" step="10" value="10" name="value" id="type-1-option-1-dose"
+              class="dose">
+          </form>
+          <form class="flex column">
+            <div class="flex">
+              <label class="flex" for="interval-1">Days between dose:&nbsp;</label>
+              <output class="intervalOutput" name="output" for="Value">1</output>
+            </div>
+            <input type="range" min="1" max="7" step="1" value="1" name="Value" id="type-1-option-1-interval"
+              class="interval">
+          </form>
+          <section class="hospital-options">
+            <h6>Choose Hospital</h6>
+            <div class="hospital-options-container flex"></div>
+          </section>
+        </section>
+      </label>
+    </template>
+    <template id="hrt-option-template">
+      <section class="medicine-type">
+        <h3>Hormone</h3>
+        <div class="flex">
+        </div>
       </section>
-    </label>
-  </template>
-  <template id="hrt-option-template">
-    <section class="medicine-type">
-      <h3>Hormone</h3>
-      <div class="flex">
-      </div>
-    </section>
-  </template>
-  <template id="group-group-header">
-    <tr>
-      <th class="summary-category" rowspan="2" scope="colgroup">Medicine</th>
-    </tr>
-  </template>
-  <template id="item-group-header">
-    <th colspan="5" scope="rowgroup">Hormone</th>
-  </template>
-  <template id="item-row">
-    <tr>
-      <td>brand name</td>
-      <td class="costValue">0.00</td>
-      <td class="costValue">0.00</td>
-      <td class="costValue">0.00</td>
-      <td class="costValue">0.00</td>
-    </tr>
-  </template>
+    </template>
+    <template id="group-group-header">
+      <tr>
+        <th class="summary-category" rowspan="2" scope="colgroup">Medicine</th>
+      </tr>
+    </template>
+    <template id="item-group-header">
+      <th colspan="5" scope="rowgroup">Hormone</th>
+    </template>
+    <template id="item-row">
+      <tr>
+        <td>brand name</td>
+        <td class="costValue">0.00</td>
+        <td class="costValue">0.00</td>
+        <td class="costValue">0.00</td>
+        <td class="costValue">0.00</td>
+      </tr>
+    </template>
   </div>
 </body>
 

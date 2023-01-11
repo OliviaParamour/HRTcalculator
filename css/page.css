@@ -6,9 +6,10 @@
     scroll-snap-align: start;
     display: grid;
     grid-template:
-        "q h e" 1fr
-        "b c d" 3fr
-        "f f f" 1fr / 2em 10fr 2em;
+    "a a a" 1fr
+    "b c d" 9fr
+    "e e e" 2fr / 1fr 10fr 1fr;
+    justify-items: center;
 }
 
 header,
@@ -63,7 +64,7 @@ input::-webkit-inner-spin-button {
 }
 
 #hrt-select-page>h2 {
-    grid-area: h;
+    grid-area: 1 / 2 / 2 / -2;
     z-index: 1;
     border-radius: 2em;
     padding: 0.5em 0;
@@ -89,9 +90,14 @@ input::-webkit-inner-spin-button {
 
 .options-container {
     grid-area: 2 / 2 / 3 / 3;
+    width: calc(100vw * 5/6);
 }
 
+
+
 .gallery-options {
+    width: 100%;
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0);
     /* border-radius: 20px; */
     /* border: 2px solid var(--darkpink); */
     /* box-shadow: 0 0 30px 10px var(--darkpink); */
@@ -105,8 +111,36 @@ input::-webkit-inner-spin-button {
     margin-left: 20em;
 }
 
+.gallery-options::-webkit-scrollbar {
+    /* padding-top: 1em; */
+    width: 10%;
+    height: 15px;
+    /* width of the entire scrollbar */
+}
+
+.gallery-options::-webkit-scrollbar-track {
+    background: none;
+    /* color of the tracking area */
+}
+
+.gallery-options::-webkit-scrollbar-thumb {
+    /* width: 40%; */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    /* border: 3px solid orange;  creates padding around scroll thumb */
+}
+
 .medicine-type {
     text-align: center;
+}
+
+.page-navigation {
+    width: 100%;
+    grid-area: 3 / 2 / 4 / 3;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 /* Page 4 Choose Hospital */

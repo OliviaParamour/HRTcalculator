@@ -166,16 +166,17 @@ function populatePrices(hospitalOptions, med, id, category, dosage, interval, ho
         const hospitalOption = hospitalTemplate.content.cloneNode(true);
 
         const label = hospitalOption.querySelector(".hospital-option");
+        const graphic = hospitalOption.querySelector(".hospital-option-graphic")
         const input = hospitalOption.querySelector("input");
         label.tabIndex = 0;
         label.htmlFor = id + "-hospital-" + i;
         input.id = id + "-hospital-" + i;
         input.name = category +"hospital";
-        hospitalOption.querySelector("h6").textContent = hospital;
+        graphic.querySelector("h6").textContent = hospital;
 
         const price = getPrice(hospital, med.brand);
         if (price>0) {
-            hospitalOption.querySelector("p").textContent = "$" + price.toFixed(2)
+            graphic.querySelector("p").textContent = "$" + price.toFixed(2)
             hospitalOptions.appendChild(hospitalOption);
             input.addEventListener("click", (e) => {
                 console.log(med.brand, hospital.properName, price);
