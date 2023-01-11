@@ -61,7 +61,11 @@ function populateTablePrices(rows, medicine, total) {
     const times = [1, 30, 365.2425, (100-age) * 365.2425]
     console.log((100-age), times[3], medicine.price)
 
-    const dailyPrice = (medicine.price * parseFloat(medicine.dose))/parseFloat(medicine.interval);
+    let dailyPrice = (medicine.price * parseFloat(medicine.dose))/parseFloat(medicine.interval);
+    if(medicine.type=="injection") {
+        console.log("injection");
+        dailyPrice /= medicine.unitSize;
+    }
     console.log(dailyPrice, medicine.dose, medicine.interval);
     for (let i = 0; i < 4; i++) {
         rows[i+1].textContent = (dailyPrice * times[i]).toFixed(2);
@@ -98,7 +102,7 @@ medicineNextBtn.addEventListener("click", (e) => {
               header.rowSpan += 2;
             }
 
-            head.querySelector("th").textContent = medicine.type;
+            head.querySelector("th").textContent = medicine.hormone;
             currentRow.appendChild(head);
             rowData[0].textContent = medicine.brand;
             populateTablePrices(rowData, medicine, totalData);
@@ -121,9 +125,9 @@ function getPrice(hospital, medicineBrand) {
 
 const chosenMeds = [null, null];
 
-function populatePrices(hospitalOptions, sources, brand, id, category, dosage, interval, hormoneType) {
+function populatePrices(hospitalOptions, med, id, category, dosage, interval, hormoneType) {
     let i = 1;
-    for(const hospital of sources) {
+    for(const hospital of med.sources) {
         const hospitalOption = hospitalTemplate.content.cloneNode(true);
 
         const label = hospitalOption.querySelector(".hospital-option");
@@ -134,18 +138,20 @@ function populatePrices(hospitalOptions, sources, brand, id, category, dosage, i
         input.name = category +"hospital";
         hospitalOption.querySelector("h6").textContent = hospital;
 
-        const price = getPrice(hospital, brand);
+        const price = getPrice(hospital, med.brand);
         if (price>0) {
             hospitalOption.querySelector("p").textContent = "$" + price.toFixed(2)
             hospitalOptions.appendChild(hospitalOption);
             input.addEventListener("click", (e) => {
-                console.log(brand, hospital.name, price);
+                console.log(med.brand, hospital.properName, price);
                 chosenMeds[parseInt(id.charAt(5))-1] = {
-                    "brand": brand,
+                    "brand": med.brand,
                     "dose": dosage.value,
                     "interval":interval.value,
+                    "type": med.type,
                     "price" :price,
-                    "type": hormoneType
+                    "hormone": hormoneType,
+                    "unitSize": med.unitSize
                 }
             })
         }
@@ -161,7 +167,7 @@ function updateValue(value, step, unitName) {
     if(step % 1 == 0) return value + " " + unitName;
     let i = 1;
     do {
-        if(step * 10 ** i % 1 == 0) return parseFloat(value).toFixed(i)  + " " + unitName;
+        if(step * (10 ** i) % 1 == 0) return parseFloat(value).toFixed(i)  + " " + unitName;
         i++;
     }
     while (step * i % 1 != 0 && i < 5)
@@ -171,6 +177,7 @@ function updateValue(value, step, unitName) {
 function populateMedicineCategory(container, meds, id, category, hormoneType) {
     let i = 1;
     for(const med of meds) {
+        // console.log(med);
         const medicineOption = medicineTemplate.content.cloneNode(true);
         const label = medicineOption.querySelector("label");
         const input = medicineOption.querySelector("input");
@@ -199,14 +206,23 @@ function populateMedicineCategory(container, meds, id, category, hormoneType) {
 
         medInfo.querySelector(".sold-size").textContent = soldSizeText;
         medInfo.querySelector(".unit-size").textContent = capitalise(medTypeData.itemName) + " size: " + med.unitSize + medTypeData.unitSizeName;
-        dosage.min = med.dose.min;
-        dosage.max = med.dose.max;
-        dosage.step = med.dose.step;
-        dosage.value = med.dose.default;
-        dosageOutput.textContent = updateValue(dosage.value, med.dose.step, medTypeData.itemNamePlural);
+        if(med.type == "injection") {
+            dosage.min = med.dose.min * med.unitSize;
+            dosage.max = med.dose.max * med.unitSize;
+            dosage.step = med.dose.step * med.unitSize;
+            dosage.value = med.dose.default * med.unitSize;
+        } else {
+            dosage.min = med.dose.min;
+            dosage.max = med.dose.max;
+            dosage.step = med.dose.step;
+            dosage.value = med.dose.default;
+        }
+
+        const unitName = med.type == "injection" ? medTypeData.unitSizeName : medTypeData.itemNamePlural
+        dosageOutput.textContent = updateValue(dosage.value, dosage.step, unitName);
         dosage.addEventListener("input", (e) => {
-            dosageOutput.textContent = updateValue(e.target.value, e.target.step, medTypeData.itemNamePlural);
-            if(chosenMeds[parseInt(id.charAt(5))-1].brand == med.brand) {
+            dosageOutput.textContent = updateValue(e.target.value, e.target.step, unitName);
+            if(chosenMeds[parseInt(id.charAt(5))-1]!=null && chosenMeds[parseInt(id.charAt(5))-1].brand == med.brand) {
                 chosenMeds[parseInt(id.charAt(5))-1].dose = e.target.value;
             }
         });
@@ -221,13 +237,13 @@ function populateMedicineCategory(container, meds, id, category, hormoneType) {
         intervalOutput.textContent = updateValue(interval.value, med.interval.step, "days")
         interval.addEventListener("input", (e) => {
             intervalOutput.textContent = updateValue(e.target.value, e.target.step, "days");
-            if(chosenMeds[parseInt(id.charAt(5))-1].brand == med.brand) {
+            if(chosenMeds[parseInt(id.charAt(5))-1]!=null && chosenMeds[parseInt(id.charAt(5))-1].brand == med.brand) {
                 chosenMeds[parseInt(id.charAt(5))-1].interval = e.target.value;
             }
         })
 
         const hospitalOptions = medicineOption.querySelector(".hospital-options-container")
-        populatePrices(hospitalOptions, med.sources, med.brand,  input.id, category, dosage, interval, hormoneType);
+        populatePrices(hospitalOptions, med,  input.id, category, dosage, interval, hormoneType);
         container.appendChild(medicineOption);
         i++;
     }
@@ -266,6 +282,8 @@ mainContent.addEventListener("scroll", (e) => {
 tBased.addEventListener("click", (e) => {
     document.querySelector("#medicine-select-page").classList.add("blue");
     document.querySelector("#medicine-select-page").classList.remove("pink");
+    chosenMeds[0] = null;
+    chosenMeds[1] = null;
     document.styleSheets[4].deleteRule(8)
     document.styleSheets[4].insertRule(checkedStyle.replace("--blue", "--pink"), 8)
 });
@@ -273,6 +291,8 @@ tBased.addEventListener("click", (e) => {
 eBased.addEventListener("click", (e) => {
     document.querySelector("#medicine-select-page").classList.add("pink");
     document.querySelector("#medicine-select-page").classList.remove("blue");
+    chosenMeds[0] = null;
+    chosenMeds[1] = null;
     document.styleSheets[4].deleteRule(8)
     document.styleSheets[4].insertRule(checkedStyle, 8)
 });
