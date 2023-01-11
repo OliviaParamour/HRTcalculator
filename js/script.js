@@ -3,16 +3,28 @@
 // import data from './hrt.json' assert {type: 'json'};
 // console.log("Test")
 
+let data;
 
 async function populate(url) {
     const request = new Request(url);
+    const btn = document.getElementById("start-btn");
+
+    btn.disabled = true;
+    console.log(btn);
+    btn.querySelector(".btn-graphics").textContent = "loading..."
     const response = await fetch(request);
-    return  await response.json();
+
+    const req = response.json();
+    req.then(() => {
+      btn.disabled = false;
+        btn.querySelector(".btn-graphics").textContent = "Start"
+        console.log(response)
+    })
+    data = await req;
 }
-const data = await populate("./js/hrt.json");
+populate("./js/hrt.json");
 
-
-
+const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
 const eBased = document.getElementById("choice-estrogen");
 const tBased = document.getElementById("choice-testosterone");
@@ -39,7 +51,7 @@ ageNextBtn.addEventListener("click", (e) => {
         age = 13;
     }
     if(age < 18) {
-        document.querySelector(".warning").textContent = "At age " + age +", you will need to wait until you are 18 to start HRT in Singapore."
+        document.querySelector(".warning").textContent = "At age " + age +", you may have to wait until you are 18 to start HRT in Singapore and you will need parental consent."
     } else {
         document.querySelector(".warning").textContent = "";
     }
@@ -70,7 +82,7 @@ medicineNextBtn.addEventListener("click", (e) => {
     }
     let headerRow = groupHeader.content.cloneNode(true);
     const header = headerRow.querySelector("th");
-    let currentRow = headerRow
+    let currentRow = headerRow.querySelector("tr");
     for (let i = 0; i < 4; i++) {
         totalData[i+2].textContent = 0;
     }
@@ -78,16 +90,18 @@ medicineNextBtn.addEventListener("click", (e) => {
         if (medicine != null) {
             const head = itemGroupHeader.content.cloneNode(true);
             const row = itemRow.content.cloneNode(true);
-            if (currentRow == null) {
-                currentRow = document.createElement("td");
-                currentRow.appendChild(document.createElement("tr"));
-                header.rowSpan += 2;
-            }
-            head.querySelector("th").textContent = medicine.type;
             const rowData = row.querySelectorAll("td");
+            if (currentRow == null) {
+                currentRow = document.createElement("tr");
+
+            } else {
+              header.rowSpan += 2;
+            }
+
+            head.querySelector("th").textContent = medicine.type;
+            currentRow.appendChild(head);
             rowData[0].textContent = medicine.brand;
             populateTablePrices(rowData, medicine, totalData);
-            currentRow.querySelector("tr").appendChild(head);
             summary.appendChild(currentRow);
             currentRow = null;
             summary.appendChild(row);

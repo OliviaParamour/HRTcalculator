@@ -24,28 +24,29 @@ body {
 }
 
 .warning {
-    color:red;
+    color: red;
 }
 
 #smooth-scroll {
-  overflow:hidden hidden;
-  height:100vh;
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+    overflow: hidden hidden;
+    height: 100vh;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 }
 
 a {
-  text-decoration:none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 
-p, a {
+p,
+a {
     font-family: var(--main-font);
 }
 
-
-footer>p,footer>p>a {
-  text-transform: uppercase;
+footer>p,
+footer>p>a {
+    text-transform: uppercase;
 }
 
 
@@ -54,9 +55,9 @@ header {
     height: 100vh;
     display: grid;
     grid-template:
-                "t t t" 1fr
-                "a s b" 1fr
-                "c c c" 1fr / 1fr 1fr 1fr;
+        "t t t" 1fr
+        "a s b" 1fr
+        "c c c" 1fr / 1fr 1fr 1fr;
     box-sizing: content-box;
     scroll-snap-align: start;
 }
@@ -84,20 +85,21 @@ main {
 }
 
 #progress {
-  border-radius: 0;
-  left: 0;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
+    border-radius: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 
-#progress::-webkit-progress-bar, #progress::-moz-progress-bar {
-  background-color: yellow;
-  border-radius: 7px;
+#progress::-webkit-progress-bar,
+#progress::-moz-progress-bar {
+    background-color: yellow;
+    border-radius: 7px;
 }
 
 progress::-webkit-progress-value {
-  background-color: lime;
+    background-color: lime;
 }
 
 .flex {
@@ -117,17 +119,40 @@ progress::-webkit-progress-value {
     background-color: var(--blue);
 }
 
-footer, nav {
+footer,
+nav {
     font-size: 0.675em;
-    position:fixed;
-    z-index:3;
+    position: fixed;
+    z-index: 3;
     top: 0;
     padding: 1em;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 
 }
 
+nav {
+    display: flex;
+    gap: 1em;
+}
+
+td {
+    font-size: 80%;
+}
+
 footer {
-  right: 0;
-  border-bottom-left-radius: 2em;
+    right: 0;
+    border-bottom-left-radius: 2em;
+}
+
+@media screen and (min-width: 700px) {
+    #nav-container {
+        flex-direction: row;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+    td {
+        font-size: 100%;
+    }
 }

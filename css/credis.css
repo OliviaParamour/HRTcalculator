@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Fredoka+One&display=swap&family=Varela+Round&display=swap");
+
+:is(body, a, h1, h2, h3, h4, h5, h6, p, li, ul, ol) {
+    margin: 0;
+}
+
+body {
+    --main-font: "Varela Round", sans-serif;
+    --lightpink: #ffeef2;
+    --pink: #F5A9B8;
+    --darkpink: #c6314f;
+    --blue: #5BCEFA;
+    --grayout: rgba(0, 0, 0, 0.7);
+    --darkblue: #23647e;
+    --lightblue: #ddf7fc;
+    text-align: center;
+    height: 100vh;
+    /* scroll-behavior: smooth; */
+    box-sizing: content-box;
+    font-family: var(--main-font);
+    background-color: var(--blue);
+}
+
+header, main, nav {
+    padding: 1em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section {
+  width: 60ch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 0.5em
+}
+
+
+p {
+    margin-bottom: 1em;
+}
+
+nav {
+  background: var(--darkblue);
+    text-align:left;
+  display:flex;
+  gap:1em;
+}
+
+nav > a {
+
+  color: white;
+  text-decoration: none;
+}
+
+a {
+/*   text-decoration:none; */
+  color: var(--darkblue)
+}
+
+p, a {
+    font-family: var(--main-font);
+  display:block;
+}
+
+ul {
+  width: 20ch;
+  text-align: left;
+}

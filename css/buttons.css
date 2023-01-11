@@ -15,6 +15,8 @@
     max-width: 20ch;
 }
 
+
+
 .btn-graphics {
     position: relative;
     padding: 0.25em 1em 0.25em 1em;
@@ -29,21 +31,33 @@
     color: white;
 }
 
-.btn:active > .btn-graphics {
-    top:0.375em;
+.nav-btn[disabled]:active>.btn-graphics {
+    top: unset;
+    box-shadow: 0px 0.375em 0px 0px grey, 0px 0.5em 20px -5px darkgrey;
+    /*   pointer-events: none; */
+}
+
+.nav-btn[disabled]>.btn-graphics {
+    background-color: darkgrey;
+    border: 0.375em solid lightgrey;
+    box-shadow: 0px 0.375em 0px 0px grey, 0px 0.5em 20px -5px darkgrey;
+}
+
+.btn:active>.btn-graphics {
+    top: 0.375em;
     box-shadow: unset;
 }
 
 .next-btn>.btn-graphics::after {
-    content:">";
+    content: ">";
     margin-left: 0.5ch;
-    margin-right:-0.5ch;
+    margin-right: -0.5ch;
 }
 
 .back-btn>.btn-graphics::before {
-    content:"<";
+    content: "<";
     margin-right: 0.5ch;
-    margin-left:-0.5ch;
+    margin-left: -0.5ch;
 }
 
 .hrt-btn {

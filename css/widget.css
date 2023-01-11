@@ -10,30 +10,30 @@
     gap: 2em;
 }
 
-.medicine-type > div {
+.medicine-type>div {
     gap: 1em;
     justify-content: center;
     margin: 1em;
 }
 
-.medicine-type > h3 {
+.medicine-type>h3 {
     margin-bottom: 1em;
 }
 
 .medicine-type-logo {
-    display:block;
+    display: block;
     position: relative;
     width: 32px;
     height: 32px;
     margin: 0 0 -32px 0;
-    z-index:2;
+    z-index: 2;
 }
 
-.medicine-choice > h4 + p {
+.medicine-choice>h4+p {
     font-size: 0.75em;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin:0em 1em;
+    margin: 0em 1em;
 }
 
 .medicine-choice {
@@ -49,15 +49,26 @@
 
 table {
     border: 2px solid black;
-    width:100%;
+    width: 100%;
+    max-width: fit-content;
     padding: 1em;
 }
 
-th, td {
+thead>tr>td {
+    border-bottom: 2px solid black;
+}
+
+th[scope="rowgroup"] {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+th,
+td {
     text-align: left;
 }
 
-.costValue, .align-right {
+.costValue,
+.align-right {
     text-align: right;
 }
 
@@ -71,7 +82,7 @@ th, td {
     text-align: center;
 }
 
-label > input[type=radio] {
+label>input[type=radio] {
     display: none;
 }
 
@@ -92,18 +103,18 @@ label > input[type=radio] {
     text-align: left;
 }
 
-.medicine-choice > section {
+.medicine-choice>section {
     margin: 1em 1em;
 }
 
-.medicine-info > * {
+.medicine-info>* {
     margin: 0.5em 0em;
 }
 
-.hospital-options > div {
+.hospital-options>div {
     margin-top: 1em;
     justify-content: center;
-    gap:1em;
+    gap: 1em;
 }
 
 .hospital-option {
@@ -130,16 +141,20 @@ label > input[type=radio] {
 .gallery-options::-webkit-scrollbar {
     /* padding-top: 1em; */
     width: 10%;
-  height: 15px;              /* width of the entire scrollbar */
-  }
+    height: 15px;
+    /* width of the entire scrollbar */
+}
 
-  .gallery-options::-webkit-scrollbar-track {
-    background: none;        /* color of the tracking area */
-  }
+.gallery-options::-webkit-scrollbar-track {
+    background: none;
+    /* color of the tracking area */
+}
 
-  .gallery-options::-webkit-scrollbar-thumb {
+.gallery-options::-webkit-scrollbar-thumb {
     /* width: 40%; */
-    background-color: rgba(255,255,255,0.5);    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
     /* border: 3px solid orange;  creates padding around scroll thumb */
-  }
+}

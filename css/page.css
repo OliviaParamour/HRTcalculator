@@ -6,12 +6,13 @@
     scroll-snap-align: start;
     display: grid;
     grid-template:
-                "q h e" 1fr
-                "b c d" 3fr
-                "f f f" 1fr / 1fr 3fr 1fr;
+        "q h e" 1fr
+        "b c d" 3fr
+        "f f f" 1fr / 1fr 10fr 1fr;
 }
 
-header, #summary-page {
+header,
+#summary-page {
     background-color: var(--blue);
 }
 
@@ -21,36 +22,36 @@ header, #summary-page {
 
 /* Page 1 Age select */
 #age-select {
-  font: 5em var(--main-font);
-  border: none;
-  width: 3ch;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  color: black;
-  background: rgba(255, 255, 255, 0.1);
-  caret-color: red;
-  border-radius: 20px;
+    font: 5em var(--main-font);
+    border: none;
+    width: 3ch;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    color: black;
+    background: rgba(255, 255, 255, 0.1);
+    caret-color: red;
+    border-radius: 20px;
 }
 
 #age-select::placeholder {
-  opacity: 1;
-  color:rgba(0,0,0,0.3);
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.3);
 }
 
 #age-select:invalid {
-  background: red;
+    background: red;
 }
 
 input[type=number] {
-  appearance: textfield;
-  -moz-appearance: textfield;
+    appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 
@@ -60,7 +61,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-.page > .next-btn {
+.page>.next-btn {
     grid-area: f;
     place-self: center flex-end;
 }
@@ -90,7 +91,7 @@ input::-webkit-inner-spin-button {
 
 /* Page 3 Choose Hormones */
 
-#medicine-select-page > .options-container {
+#medicine-select-page>.options-container {
     grid-area: 2 / 1 / 3 / -1;
     margin: 0em 2em;
 }
@@ -101,11 +102,10 @@ input::-webkit-inner-spin-button {
     overflow: auto hidden;
     /* justify-content: center; */
 }
+
 .medicine-type {
-    width: 100%;
     text-align: center;
 }
 
 /* Page 4 Choose Hospital */
 /* Page 5 Summary Page */
-

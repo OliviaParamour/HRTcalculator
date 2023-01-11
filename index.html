@@ -49,13 +49,13 @@
 <body>
   <div id="smooth-scroll">
   <header id="start-page">
-    <nav><a href="widget.html">Widget Test</a></nav>
+    <nav><a href="index.html">Main Page</a> <a href="about.html">About</a> <a href="credits.html">Credits</a></nav>
     <div class="start-container flex column">
       <h1>HRT Cost Calculator</h1>
       <p>Providing you the cost of HRT as easily as possible</p>
-      <a class="btn nav-btn next-btn" href="#main">
+      <button class="btn nav-btn next-btn" onclick="window.location.href = '#main'" id="start-btn">
         <div class="btn-graphics">Start</div>
-      </a>
+      </button>
     </div>
   </header>
   <main id="main">
@@ -102,17 +102,17 @@
       </a>
     </section>
     <section class="page flex column" id="summary-page">
-      <div class="options-container">
+      <div class="options-container flex column">
         <h2>Summary of Costs</h2>
         <table id="summary-table">
           <thead>
             <tr>
               <td></td>
               <td>Item</td>
-              <td class="align-right">unit cost</td>
-              <td class="align-right">monthly cost</td>
-              <td class="align-right">yearly cost</td>
-              <td class="align-right">lifestime cost</td>
+              <td class="align-right">Daily Cost</td>
+              <td class="align-right">Monthly Cost</td>
+              <td class="align-right">Yearly Cost</td>
+              <td class="align-right">Lifetime Cost</td>
             </tr>
         </thead>
         <tbody id="summary-table-content">
@@ -132,7 +132,7 @@
         <!-- <a class="btn nav-btn" id="restart" href="#start-page">
           <div class="btn-graphics">Download results</div>
         </a> -->
-        <div class="flex" id="nav-container">
+        <div class="flex column" id="nav-container">
           <a class="btn nav-btn" href="#age-select-page">
             <div class="btn-graphics">Change Age</div>
           </a>
@@ -150,9 +150,9 @@
   <footer>
     <p>Created by <a href="https://linktr.ee/Oliviaparamour">Olivia Paramour</a> on <time
         datetime="2023-01-06T14:00:00+0800">06-Jan-23</time></p>
-    <a href="https://www.flaticon.com/free-icons/syringe" title="syringe icons">Syringe icons created by Those Icons - Flaticon</a>
-    <a href="https://www.flaticon.com/free-icons/pill" title="pill icons">Pill icons created by Freepik - Flaticon</a>
-    <a href="https://www.flaticon.com/free-icons/patch" title="patch icons">Patch icons created by Freepik - Flaticon</a>
+    <p>
+      Version 1.0
+    </p>
   </footer>
   <template id="hospital-option-template">
     <label class="hospital-option" for="type-1-option-1-hospital-1">
