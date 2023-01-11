@@ -7,13 +7,13 @@
 }
 
 .options-container {
-    gap: 2em;
+    gap: 1em 2em;
 }
 
 .medicine-type>div {
     gap: 1em;
     justify-content: center;
-    margin: 1em;
+    margin: 1em 0em;
 }
 
 .medicine-type>h3 {

@@ -8,16 +8,12 @@
     grid-template:
         "q h e" 1fr
         "b c d" 3fr
-        "f f f" 1fr / 1fr 10fr 1fr;
+        "f f f" 1fr / 2em 10fr 2em;
 }
 
 header,
 #summary-page {
     background-color: var(--blue);
-}
-
-.options-container {
-    grid-area: c;
 }
 
 /* Page 1 Age select */
@@ -91,16 +87,22 @@ input::-webkit-inner-spin-button {
 
 /* Page 3 Choose Hormones */
 
-#medicine-select-page>.options-container {
-    grid-area: 2 / 1 / 3 / -1;
-    margin: 0em 2em;
+.options-container {
+    grid-area: 2 / 2 / 3 / 3;
 }
 
 .gallery-options {
+    /* border-radius: 20px; */
+    /* border: 2px solid var(--darkpink); */
+    /* box-shadow: 0 0 30px 10px var(--darkpink); */
     gap: 2em;
     /* width: 40em; */
     overflow: auto hidden;
     /* justify-content: center; */
+}
+
+.gallery-options:first-child {
+    margin-left: 20em;
 }
 
 .medicine-type {
