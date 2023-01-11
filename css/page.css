@@ -8,7 +8,7 @@
     grid-template:
                 "q h e" 1fr
                 "b c d" 3fr
-                "f f f" 1fr / 1fr 2fr 1fr;
+                "f f f" 1fr / 1fr 3fr 1fr;
 }
 
 header, #summary-page {
@@ -58,6 +58,11 @@ input::-webkit-inner-spin-button {
 #hrt-select-page {
     justify-content: center;
     align-items: center;
+}
+
+.page > .next-btn {
+    grid-area: f;
+    place-self: center flex-end;
 }
 
 #hrt-select-page>h2 {

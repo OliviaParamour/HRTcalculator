@@ -59,13 +59,12 @@
     </div>
   </header>
   <main id="main">
-    <progress aria-label="calculator input progress" id="progress" max="100" min="0" value="0"></progress>
     <section class="page" id="age-select-page">
       <div class="flex column options-container" id="a">
         <h2>First, let's start with your age</h2>
         <label for="age">How old are you?</label>
         <input type="number" name="age" min="13" max="120" id="age-select" placeholder="18" aria-label="your age">
-        <a class="btn nav-btn next-btn" href="#hrt-select-page">
+        <a class="btn nav-btn next-btn" id="age-next" href="#hrt-select-page">
           <div class="btn-graphics">Next</div>
         </a>
       </div>
@@ -97,17 +96,42 @@
         <a class="btn nav-btn back-btn" href="#hrt-select-page">
           <div class="btn-graphics">Back</div>
         </a>
-        <a class="btn nav-btn next-btn" href="#summary-page">
-          <div class="btn-graphics">Next</div>
-        </a>
       </div>
+      <a class="btn nav-btn next-btn" id="medicine-next" href="#summary-page">
+        <div class="btn-graphics">Next</div>
+      </a>
     </section>
     <section class="page flex column" id="summary-page">
       <div class="options-container">
         <h2>Summary of Costs</h2>
-        <a class="btn nav-btn" id="restart" href="#start-page">
+        <table id="summary-table">
+          <thead>
+            <tr>
+              <td></td>
+              <td>Item</td>
+              <td class="align-right">unit cost</td>
+              <td class="align-right">monthly cost</td>
+              <td class="align-right">yearly cost</td>
+              <td class="align-right">lifestime cost</td>
+            </tr>
+        </thead>
+        <tbody id="summary-table-content">
+        </tbody>
+        <tfoot>
+          <tr id="summary-total">
+            <td></td>
+            <td>Total</td>
+            <td class="costValue">0.00</td>
+            <td class="costValue">0.00</td>
+            <td class="costValue">0.00</td>
+            <td class="costValue">0.00</td>
+          </tr>
+        </tfoot>
+        </table>
+        <p class="warning">You will have to wait until you are 18 to start HRT.</p>
+        <!-- <a class="btn nav-btn" id="restart" href="#start-page">
           <div class="btn-graphics">Download results</div>
-        </a>
+        </a> -->
         <div class="flex" id="nav-container">
           <a class="btn nav-btn" href="#age-select-page">
             <div class="btn-graphics">Change Age</div>
@@ -121,6 +145,7 @@
         </div>
       </div>
     </section>
+    <progress aria-label="calculator input progress" id="progress" max="100" min="0" value="0"></progress>
   </main>
   <footer>
     <p>Created by <a href="https://linktr.ee/Oliviaparamour">Olivia Paramour</a> on <time
@@ -144,26 +169,24 @@
       <p>Cyproterone Acetate</p>
       <section class="medicine-info">
         <h5>Information</h5>
-        <p>Sold in: 10 tabs per strip</p>
-        <p>Size of each tab: 50mg</p>
+        <p class="sold-size">Sold in: 10 tabs per strip</p>
+        <p class="unit-size">Size of each tab: 50mg</p>
       </section>
       <section class="medicine-dosage flex column">
         <h5>Choose Dosage</h5>
-        <form class="flex column" oninput="output.value=parseFloat(value.value).toFixed(1);">
+        <form class="flex column">
           <div class="flex">
             <label class="flex" for="dose-1">Dose:&nbsp;</label>
-            <output name="output" for="value">1</output>
-            <p>&nbsp;unit</p>
+            <output class="dosageOutput" name="output" for="value">1</output>
           </div>
-          <input type="range" min="0" max="100" step="10" value="10" name="value" id="dose-1">
+          <input type="range" min="0" max="100" step="10" value="10" name="value" id="type-1-option-1-dose" class="dose">
         </form>
-        <form class="flex column" oninput="output.value=parseInt(Value.value);">
+        <form class="flex column">
           <div class="flex">
             <label class="flex" for="interval-1">Days between dose:&nbsp;</label>
-            <output name="output" for="Value">1</output>
-            <p>&nbsp;days</p>
+            <output class="intervalOutput" name="output" for="Value">1</output>
           </div>
-          <input type="range" min="1" max="7" step="1" value="1" name="Value" id="interval-1">
+          <input type="range" min="1" max="7" step="1" value="1" name="Value" id="type-1-option-1-interval" class="interval">
         </form>
         <section class="hospital-options">
           <h6>Choose Hospital</h6>
@@ -179,7 +202,23 @@
       </div>
     </section>
   </template>
-
+  <template id="group-group-header">
+    <tr>
+      <th class="summary-category" rowspan="2" scope="colgroup">Medicine</th>
+    </tr>
+  </template>
+  <template id="item-group-header">
+    <th colspan="5" scope="rowgroup">Hormone</th>
+  </template>
+  <template id="item-row">
+    <tr>
+      <td>brand name</td>
+      <td class="costValue">0.00</td>
+      <td class="costValue">0.00</td>
+      <td class="costValue">0.00</td>
+      <td class="costValue">0.00</td>
+    </tr>
+  </template>
   </div>
 </body>
 

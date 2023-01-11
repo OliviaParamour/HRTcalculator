@@ -1,4 +1,27 @@
 {
+    "medicineType": {
+        "pills": {
+            "groupName": "strip",
+            "itemName": "tab",
+            "itemNamePlural": "tabs",
+            "unitSizeName": "mg",
+            "logo": "https://cdn.glitch.global/e41cbd5e-2d0c-4097-956a-79ca94cd4f3b/pills.png"
+        },
+        "patches": {
+            "groupName": "pack",
+            "itemName": "patch",
+            "itemNamePlural": "patches",
+            "unitSizeName": "mcg",
+            "logo": "https://cdn.glitch.global/e41cbd5e-2d0c-4097-956a-79ca94cd4f3b/patch.png"
+        },
+        "injection": {
+            "itemName": "vial",
+            "itemNamePlural": "vials",
+            "unitSizeName": "ml",
+            "concentrationName": ["g/10ml", "mg/1ml", "g/4ml"],
+            "logo": "https://cdn.glitch.global/e41cbd5e-2d0c-4097-956a-79ca94cd4f3b/syringe.png"
+        }
+    },
     "hormones": {
         "estrogenBased": {
             "antiAndrogen": {
@@ -9,20 +32,40 @@
                         "activeIngredient": "Cyproterone Acetate",
                         "sources": ["TTSH"],
                         "type": "pills",
-                        "size": 50,
-                        "unit": "mg",
-                        "dose": 0.25,
-                        "interval": 1
+                        "groupSize": 10,
+                        "unitSize": 50,
+                        "dose": {
+                            "min": 0.25,
+                            "max": 1,
+                            "step": 0.25,
+                            "default": 0.25
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 3,
+                            "step": 1,
+                            "default": 1
+                        }
                     },
                     {
                         "brand": "Uractonum",
                         "activeIngredient": "Spironolactone",
                         "sources": ["TTSH"],
                         "type": "pills",
-                        "size": 25,
-                        "unit": "mg",
-                        "dose": 8,
-                        "interval": 1
+                        "groupSize": 10,
+                        "unitSize": 25,
+                        "dose": {
+                            "min": 1,
+                            "max": 4,
+                            "step": 1,
+                            "default": 1
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 3,
+                            "step": 1,
+                            "default": 1
+                        }
                     }
                 ]
             },
@@ -33,42 +76,84 @@
                         "brand": "Estromon 100",
                         "activeIngredient": "Estradiol",
                         "sources": ["TTSH"],
-                        "type": "patches",
-                        "size": 100,
-                        "unit": "mcg",
-                        "dose": 2,
-                        "interval": 3.5
+                        "type" : "patches",
+                        "groupSize": 24,
+                        "unitSize": 100,
+                        "dose": {
+                            "min": 1,
+                            "max": 4,
+                            "step": 0.5,
+                            "default": 2
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 7,
+                            "step": 0.5,
+                            "default": 3.5
+                        }
                     },
                     {
                         "brand": "Estromon 50",
                         "activeIngredient": "Estradiol",
                         "sources": ["TTSH"],
-                        "type": "patches",
-                        "size": 50,
-                        "unit": "mcg",
-                        "dose": 2,
-                        "interval": 3.5
+                        "type" : "patches",
+                        "groupSize": 10,
+                        "unitSize": 50,
+                        "unitSizeName": "mcg",
+                        "dose": {
+                            "min": 1,
+                            "max": 8,
+                            "step": 0.5,
+                            "default": 2
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 7,
+                            "step": 0.5,
+                            "default": 3.5
+                        }
                     },
                     {
                         "brand": "Estrofem",
                         "activeIngredient": "Estradiol",
                         "sources": ["TTSH"],
-                        "type": "pills",
-                        "size": 2,
-                        "unit": "mg",
-                        "dose": 3,
-                        "interval": 1
+                        "type" : "pills",
+                        "groupSize": 28,
+                        "unitSize": 2,
+                        "dose": {
+                            "min": 1,
+                            "max": 5,
+                            "step": 1,
+                            "default": 1
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 7,
+                            "step": 0.5,
+                            "default": 3.5
+                        }
                     },
                     {
                         "brand": "Progynova",
                         "activeIngredient": "Estradiol Valerate",
                         "sources": ["TTSH"],
-                        "type": "pills",
-                        "size": 2,
-                        "unit": "mg",
-                        "dose": 4,
-                        "interval": 1,
-                        "price": 0.54
+                        "type" : "pills",
+                        "groupSize": 10,
+                        "itemName": "tab",
+                        "unitSize": 2,
+                        "unitSizeName": "mg",
+                        "dose": {
+                            "min": 1,
+                            "max": 5,
+                            "step": 1,
+                            "default": 2
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 3,
+                            "step": 1,
+                            "default": 1
+                        }
                     }
                 ]
             }
@@ -81,31 +166,66 @@
                         "brand": "Depo-T",
                         "activeIngredient":"Testosterone Cypionate",
                         "sources": ["TTSH", "CGH"],
-                        "type": "injection",
-                        "size": 1,
-                        "unit": "g/10ml",
-                        "dose": 0.3,
-                        "interval": 28
+                        "type" : "injection",
+                        "groupSize": 1,
+                        "unitSize": 10,
+                        "concentration": 100,
+                        "concentrationName": "mg/ml",
+                        "dose": {
+                            "min": 0.2,
+                            "max": 4,
+                            "step": 0.1,
+                            "default": 0.3
+                        },
+                        "interval": {
+                            "min": 14,
+                            "max": 28,
+                            "step": 7,
+                            "default": 28
+                        }
                     },
                     {
                         "brand": "Sustanon 250",
                         "activeIngredient": "Testosterone propionate/testosterone phenylpropionate/testosterone isocaproate/testosterone decanoate",
                         "sources": ["NUH"],
-                        "type": "injection",
-                        "size": 250,
-                        "unit": "mg/1ml",
-                        "dose": 1,
-                        "interval": 21
+                        "type" : "injection",
+                        "groupSize": 1,
+                        "unitSize": 10,
+                        "concentration": 250,
+                        "concentrationName": "mg/ml",
+                        "dose": {
+                            "min": 0.1,
+                            "max": 0.1,
+                            "step": 0,
+                            "default": 0.1
+                        },
+                        "interval": {
+                            "min": 21,
+                            "max": 28,
+                            "step": 7,
+                            "default": 21
+                        }
                     },
                     {
                         "brand": "Nebido",
                         "activeIngredient": "Testosterone undecanoate",
                         "sources": ["TTSH", "NUH"],
-                        "type": "injection",
-                        "size": 1,
-                        "unit": "g/4ml",
-                        "dose": 0.3,
-                        "interval": 84
+                        "type" : "injection",
+                        "groupSize": 1,
+                        "unitSize": 4,
+                        "unitSizeName": "g/4ml",
+                        "dose": {
+                            "min": 1,
+                            "max": 1,
+                            "step": 0,
+                            "default": 1
+                        },
+                        "interval": {
+                            "min": 70,
+                            "max": 98,
+                            "step": 7,
+                            "default": 84
+                        }
                     }
                 ]
             }

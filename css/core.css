@@ -23,6 +23,10 @@ body {
     background-color: lightcoral;
 }
 
+.warning {
+    color:red;
+}
+
 #smooth-scroll {
   overflow:hidden hidden;
   height:100vh;
@@ -38,6 +42,7 @@ a {
 p, a {
     font-family: var(--main-font);
 }
+
 
 footer>p,footer>p>a {
   text-transform: uppercase;
