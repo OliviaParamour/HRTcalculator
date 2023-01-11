@@ -18,6 +18,11 @@
 
 .medicine-type>h3 {
     margin-bottom: 1em;
+    text-align: left;
+}
+
+.medicine-type>h3:after {
+    content: "->"
 }
 
 .medicine-type-logo {
