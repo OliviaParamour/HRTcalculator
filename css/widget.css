@@ -138,6 +138,11 @@ label>input[type=radio] {
     color: gray;
 }
 
+.gallery-options {
+    width: 100vh;
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0);
+}
+
 .gallery-options::-webkit-scrollbar {
     /* padding-top: 1em; */
     width: 10%;
