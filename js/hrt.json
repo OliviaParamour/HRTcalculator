@@ -48,6 +48,26 @@
                         }
                     },
                     {
+                        "brand": "Spirolon 25",
+                        "activeIngredient": "Spironolactone",
+                        "sources": ["MaNaDr"],
+                        "type": "pills",
+                        "groupSize": 10,
+                        "unitSize": 25,
+                        "dose": {
+                            "min": 1,
+                            "max": 4,
+                            "step": 1,
+                            "default": 1
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 3,
+                            "step": 1,
+                            "default": 1
+                        }
+                    },
+                    {
                         "brand": "Uractonum",
                         "activeIngredient": "Spironolactone",
                         "sources": ["TTSH"],
@@ -116,7 +136,7 @@
                     {
                         "brand": "Estrofem",
                         "activeIngredient": "Estradiol",
-                        "sources": ["TTSH"],
+                        "sources": ["TTSH", "MaNaDr"],
                         "type" : "pills",
                         "groupSize": 28,
                         "unitSize": 2,
@@ -459,13 +479,13 @@
             "properName": "Changi General Hospital",
             "hrt": [
                 {
-                    "name": "Testosterone Cypionate",
+                    "activeIngredient": "Testosterone Cypionate",
                     "brand": "Depo-T",
                     "price": 58.65,
                     "subsidy": true
                 },
                 {
-                    "name": "Testosterone undecanoate",
+                    "activeIngredient": "Testosterone undecanoate",
                     "brand": "Nebido",
                     "price": 280.37,
                     "subsidy": false
@@ -546,6 +566,27 @@
                 }
             ],
             "appointments" : []
+        },
+        "MaNaDr": {
+            "properName": "ManaDr",
+            "zone": "Unknown",
+            "hrt": [
+                {
+                    "brand": "Spirolon 25",
+                    "activeIngredient": "Spironolactone",
+                    "company":"Remedica",
+                    "price": 0.29,
+                    "subsidy": false
+                },
+                {
+                    "brand": "Estrofem",
+                    "activeIngredient": "Estradiol",
+                    "price": 1.17,
+                    "subsidy": false
+                }
+            ],
+            "bloodTests":[],
+            "appointments":[]
         }
     },
 
