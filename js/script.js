@@ -287,16 +287,16 @@ function populateGallery(e) {
     while (gallery.lastElementChild) {
         gallery.removeChild(gallery.lastElementChild);
     }
-    const warning = document.querySelector("#warning-not-loaded");
+    // const warning = document.querySelector("#warning-not-loaded");
     if(e.currentTarget.id == "choice-estrogen") {
         hormones = data.hormones.estrogenBased;
-        warning.classList.add("hidden");
+        // warning.classList.add("hidden");
     } else if (e.currentTarget.id =="choice-testosterone") {
         hormones = data.hormones.testosteroneBased;
-        warning.classList.add("hidden");
+        // warning.classList.add("hidden");
     } else {
         console.log("content not loaded", e.currentTarget);
-        warning.classList.remove("hidden");
+        // warning.classList.remove("hidden");
     }
     let i = 1;
     for (const key in hormones) {

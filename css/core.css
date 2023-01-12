@@ -27,7 +27,7 @@ body {
 .warning {
     text-align: left;
     color: red;
-    width:48ch;
+    max-width: 48ch;
 }
 
 #smooth-scroll {
@@ -98,6 +98,7 @@ main {
 }
 
 #progress {
+    visibility: hidden;
     border-radius: 0;
     left: 0;
     width: 100%;
@@ -161,6 +162,9 @@ footer {
     #nav-container {
         flex-direction: row;
     }
+    #progress {
+        visibility: visible;
+    }
 
 }
 
@@ -168,4 +172,5 @@ footer {
     td {
         font-size: 100%;
     }
+
 }
