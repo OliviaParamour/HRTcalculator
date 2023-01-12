@@ -25,7 +25,9 @@ body {
 }
 
 .warning {
+    text-align: left;
     color: red;
+    width:48ch;
 }
 
 #smooth-scroll {
@@ -75,6 +77,10 @@ header {
     /* width: fit-content; */
     max-height: 20em;
     max-width: 40ch;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 main {

@@ -46,14 +46,24 @@ const ageSelect = document.getElementById("age-select");
 let age = null;
 
 ageNextBtn.addEventListener("click", (e) => {
+    const parentsWarning = document.querySelector("#warning-under-21");
+    const under18Warning = document.querySelector("#warning-under-18")
     if(ageSelect.value=="") {
         ageSelect.value = 13;
         age = 13;
     }
-    if(age < 18) {
-        document.querySelector(".warning").textContent = "At age " + age +", you may have to wait until you are 18 to start HRT in Singapore and you will need parental consent."
+    if(age < 21) {
+        parentsWarning.classList.remove("hidden");
+        console.log("we are here", parentsWarning.classList)
     } else {
-        document.querySelector(".warning").textContent = "";
+        parentsWarning.classList.add("hidden");
+    }
+    if(age < 18) {
+        under18Warning.classList.remove("hidden");
+        under18Warning.textContent = "At age " + age +", you may have to wait until you are 18 to start HRT in Singapore."
+    } else {
+        under18Warning.textContent = "";
+        under18Warning.classList.add("hidden");
     }
 });
 
@@ -284,16 +294,23 @@ function populateMedicineCategory(container, meds, id, category, hormoneType) {
         i++;
     }
 }
-
+let hormones;
 function populateGallery(e) {
+
+    console.log("button was clicked")
     while (gallery.lastElementChild) {
         gallery.removeChild(gallery.lastElementChild);
     }
-    let hormones;
-    if(e.target.id == "choice-estrogen") {
+
+    console.log("content removed")
+
+    if(e.currentTarget.id == "choice-estrogen") {
         hormones = data.hormones.estrogenBased;
-    } else if (e.target.id =="choice-testosterone") {
+    } else if (e.currentTarget.id =="choice-testosterone") {
         hormones = data.hormones.testosteroneBased;
+    } else {
+        console.log(e.target, e.currentTarget);
+
     }
     let i = 1;
     for (const key in hormones) {
@@ -315,7 +332,9 @@ mainContent.addEventListener("scroll", (e) => {
 });
 
 
-tBased.addEventListener("click", (e) => {
+tBased.addEventListener("pointerdown", (e) => {
+    console.log("T was clicked")
+    // window.location.href = "#medicine-select-page";
     document.querySelector("#medicine-select-page").classList.add("blue");
     document.querySelector("#medicine-select-page").classList.remove("pink");
     chosenMeds[0] = null;
@@ -324,7 +343,8 @@ tBased.addEventListener("click", (e) => {
     document.styleSheets[4].insertRule(checkedStyle.replace("--blue", "--pink"), 8)
 });
 
-eBased.addEventListener("click", (e) => {
+eBased.addEventListener("pointerdown", (e) => {
+    // window.location.href = "#medicine-select-page";
     document.querySelector("#medicine-select-page").classList.add("pink");
     document.querySelector("#medicine-select-page").classList.remove("blue");
     chosenMeds[0] = null;
@@ -335,5 +355,9 @@ eBased.addEventListener("click", (e) => {
 
 //  var btn = document.createElement("button");
 //  document.body.appendChild(btn);
-eBased.addEventListener("click", populateGallery);
-tBased.addEventListener("click", populateGallery);
+eBased.addEventListener("pointerdown", (e) => {
+    populateGallery(e);
+});
+tBased.addEventListener("pointerdown",  (e) => {
+    populateGallery(e);
+});

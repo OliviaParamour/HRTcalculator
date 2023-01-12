@@ -106,6 +106,7 @@
         <div class="options-container flex column">
           <h2>Choose your medicine</h2>
           <section class="gallery-options flex"></section>
+          <p class="warning hidden" id="warning-not-loaded">Content not Loaded</p>
         </div>
         <div class="page-navigation flex">
           <a class="btn nav-btn back-btn" href="#hrt-select-page">
@@ -115,7 +116,6 @@
             <div class="btn-graphics">Next</div>
           </a>
         </div>
-
       </section>
       <section class="page flex column" id="summary-page">
         <div class="options-container flex column">
@@ -144,7 +144,8 @@
               </tr>
             </tfoot>
           </table>
-          <p class="warning">You will have to wait until you are 18 to start HRT.</p>
+          <p class="warning hidden" id="warning-under-18">You will have to wait until you are 18 to start HRT.</p>
+          <p class="warning hidden" id="warning-under-21">You will need parental consent while under 21.</p>
           <!-- <a class="btn nav-btn" id="restart" href="#start-page">
           <div class="btn-graphics">Download results</div>
         </a> -->

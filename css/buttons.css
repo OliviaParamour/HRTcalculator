@@ -140,6 +140,6 @@
         font-size: 2rem;
     }
     .btn-graphics {
-        font: 2rem var(--main-font);
+        font: 1.5rem var(--main-font);
     }
 }
