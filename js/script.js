@@ -1,7 +1,6 @@
 "use strict";
 
 // import data from './hrt.json' assert {type: 'json'};
-// console.log("Test")
 
 let data;
 
@@ -10,7 +9,6 @@ async function populate(url) {
     const btn = document.getElementById("start-btn");
 
     btn.disabled = true;
-    console.log(btn);
     btn.querySelector(".btn-graphics").textContent = "loading..."
     const response = await fetch(request);
 
@@ -54,7 +52,6 @@ ageNextBtn.addEventListener("click", (e) => {
     }
     if(age < 21) {
         parentsWarning.classList.remove("hidden");
-        console.log("we are here", parentsWarning.classList)
     } else {
         parentsWarning.classList.add("hidden");
     }
@@ -76,15 +73,11 @@ document.getElementById("lifetime-checkbox").addEventListener("input", (e) => {
 function populateTablePrices(rows, medicine, total) {
     const times = [1, 30, 365.2425, (100-age) * 365.2425]
     if (lifeTimeCheckbox) times.pop(3)
-    console.log((100-age), times[3], medicine.price)
 
     let dailyPrice = (medicine.price * parseFloat(medicine.dose))/parseFloat(medicine.interval);
     if(medicine.type=="injection") {
-        console.log("injection");
         dailyPrice /= medicine.unitSize;
     }
-    console.log(times.length);
-    console.log(dailyPrice, medicine.dose, medicine.interval);
     for (let i = 0; i < times.length; i++) {
         rows[i+1].textContent = (dailyPrice * times[i]).toFixed(2);
         total[i+2].textContent = (dailyPrice * times[i] + parseFloat(total[i+2].textContent)).toFixed(2);
@@ -93,12 +86,10 @@ function populateTablePrices(rows, medicine, total) {
 
 ageSelect.addEventListener("change", (e) => {
     age = parseInt(e.target.value);
-    console.log(age);
 })
 
 medicineNextBtn.addEventListener("click", (e) => {
     const headData = document.querySelector("#summary-table-head")
-    console.log(totalData.querySelectorAll("td").length )
     if(lifeTimeCheckbox) {
 
         if (headData.querySelectorAll("td").length > 5) {
@@ -121,7 +112,6 @@ medicineNextBtn.addEventListener("click", (e) => {
             totalData.appendChild(lifeTimeTotal)
         }
     }
-    console.log(totalData.querySelectorAll("td").length )
     while (summary.lastElementChild) {
         summary.removeChild(summary.lastElementChild);
     }
@@ -148,7 +138,6 @@ medicineNextBtn.addEventListener("click", (e) => {
 
             head.querySelector("th").textContent = medicine.hormone;
             currentRow.appendChild(head);
-            console.log(row, rowData)
             rowData[0].textContent = medicine.brand;
             populateTablePrices(rowData, medicine, totalData.querySelectorAll("td"));
             summary.appendChild(currentRow);
@@ -189,7 +178,6 @@ function populatePrices(hospitalOptions, med, id, category, dosage, interval, ho
             graphic.querySelector("p").textContent = "$" + price.toFixed(2)
             hospitalOptions.appendChild(hospitalOption);
             input.addEventListener("click", (e) => {
-                console.log(med.brand, hospital.properName, price);
                 chosenMeds[parseInt(id.charAt(5))-1] = {
                     "brand": med.brand,
                     "dose": dosage.value,
@@ -296,21 +284,19 @@ function populateMedicineCategory(container, meds, id, category, hormoneType) {
 }
 let hormones;
 function populateGallery(e) {
-
-    console.log("button was clicked")
     while (gallery.lastElementChild) {
         gallery.removeChild(gallery.lastElementChild);
     }
-
-    console.log("content removed")
-
+    const warning = document.querySelector("#warning-not-loaded");
     if(e.currentTarget.id == "choice-estrogen") {
         hormones = data.hormones.estrogenBased;
+        warning.classList.add("hidden");
     } else if (e.currentTarget.id =="choice-testosterone") {
         hormones = data.hormones.testosteroneBased;
+        warning.classList.add("hidden");
     } else {
-        console.log(e.target, e.currentTarget);
-
+        console.log("content not loaded", e.currentTarget);
+        warning.classList.remove("hidden");
     }
     let i = 1;
     for (const key in hormones) {
@@ -332,9 +318,7 @@ mainContent.addEventListener("scroll", (e) => {
 });
 
 
-tBased.addEventListener("pointerdown", (e) => {
-    console.log("T was clicked")
-    // window.location.href = "#medicine-select-page";
+tBased.addEventListener("click", (e) => {
     document.querySelector("#medicine-select-page").classList.add("blue");
     document.querySelector("#medicine-select-page").classList.remove("pink");
     chosenMeds[0] = null;
@@ -343,8 +327,7 @@ tBased.addEventListener("pointerdown", (e) => {
     document.styleSheets[4].insertRule(checkedStyle.replace("--blue", "--pink"), 8)
 });
 
-eBased.addEventListener("pointerdown", (e) => {
-    // window.location.href = "#medicine-select-page";
+eBased.addEventListener("click", (e) => {
     document.querySelector("#medicine-select-page").classList.add("pink");
     document.querySelector("#medicine-select-page").classList.remove("blue");
     chosenMeds[0] = null;
@@ -355,9 +338,9 @@ eBased.addEventListener("pointerdown", (e) => {
 
 //  var btn = document.createElement("button");
 //  document.body.appendChild(btn);
-eBased.addEventListener("pointerdown", (e) => {
+eBased.addEventListener("click", (e) => {
     populateGallery(e);
 });
-tBased.addEventListener("pointerdown",  (e) => {
+tBased.addEventListener("click",  (e) => {
     populateGallery(e);
 });
