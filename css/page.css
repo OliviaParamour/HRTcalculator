@@ -1,8 +1,10 @@
 @charset "utf-8";
 
 .page {
-    height: 100%;
-    box-sizing: content-box;
+    height: 100vh;
+    flex-grow: 1;
+    flex-shrink: 0;
+    /* box-sizing: content-box; */
     scroll-snap-align: start;
     display: grid;
     grid-template:
@@ -15,6 +17,7 @@
 header,
 #summary-page {
     background-color: var(--blue);
+    height: 100vh;
 }
 
 /* Page 1 Age select */
@@ -141,7 +144,13 @@ input::-webkit-inner-spin-button {
     grid-area: 3 / 2 / 4 / 3;
     justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 10vh;
 }
 
+@media screen and (min-width:50em) {
+    .page-navigation {
+        margin-bottom: 0;
+    }
+}
 /* Page 4 Choose Hospital */
 /* Page 5 Summary Page */

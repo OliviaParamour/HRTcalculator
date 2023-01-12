@@ -92,6 +92,8 @@ main {
     scroll-behavior: smooth;
     overflow: hidden auto;
     scroll-snap-type: y mandatory;
+    display: flex;
+    flex-direction: column;
 
 }
 
