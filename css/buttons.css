@@ -10,7 +10,7 @@
 }
 
 .nav-btn {
-    margin: 1em 1em 1em 0;
+    margin: 1em;
     border-radius: 35px;
     max-width: 20ch;
 }
@@ -27,7 +27,7 @@
     border-radius: 2em;
     box-shadow: 0px 0.375em 0px 0px var(--darkpink), 0px 0.5em 20px -5px rgba(41, 1, 31, 0.7);
 
-    font: 1.5rem var(--main-font);
+    font: 1rem var(--main-font);
     color: white;
 }
 
@@ -133,4 +133,13 @@
 .hrt-btn:active>.hrt-btn-circle {
     /* transform: scale(1.5); */
     animation: squeeze 0.6s ease-in-out;
+}
+
+@media screen and (min-width:50em) {
+    .btn {
+        font-size: 2rem;
+    }
+    .btn-graphics {
+        font: 2rem var(--main-font);
+    }
 }
