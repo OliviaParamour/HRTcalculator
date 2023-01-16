@@ -121,10 +121,7 @@ input::-webkit-inner-spin-button {
 .gallery-options::-webkit-scrollbar-thumb {
     /* width: 40%; */
     background-color: rgba(255, 255, 255, 0.5);
-    /* color of the scroll thumb */
     border-radius: 20px;
-    /* roundness of the scroll thumb */
-    /* border: 3px solid orange;  creates padding around scroll thumb */
 }
 
 .page-navigation {

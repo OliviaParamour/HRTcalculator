@@ -84,10 +84,14 @@ td {
 }
 
 .summary-category {
-    -webkit-writing-mode: vertical-rl;
-    writing-mode: vertical-rl;
+
     transform: rotate(-180deg);
     text-align: center;
+}
+
+.vertical-text {
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
 }
 
 label>input[type=radio] {
