@@ -14,7 +14,7 @@ body {
     --blue: #5BCEFA;
     --grayout: rgba(0, 0, 0, 0.7);
     --darkblue: #23647e;
-    --lightblue: #ddf7fc;
+    --lightblue: #94edff;
     text-align: center;
     height: 100vh;
     /* scroll-behavior: smooth; */
@@ -80,7 +80,7 @@ header {
 }
 
 .hidden {
-    visibility: hidden;
+    display: hidden;
 }
 
 main {
@@ -108,12 +108,9 @@ main {
 
 #progress::-webkit-progress-bar,
 #progress::-moz-progress-bar {
-    background-color: yellow;
-    border-radius: 7px;
-}
 
-progress::-webkit-progress-value {
     background-color: lime;
+    /* border-radius: 7px; */
 }
 
 .flex {

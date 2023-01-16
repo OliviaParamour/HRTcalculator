@@ -2,6 +2,24 @@
 
 // import data from './hrt.json' assert {type: 'json'};
 
+window.addEventListener("keydown", checkKeyPressed, false);
+
+let escapeTimerHandle = 0;
+let escapeCount = 0;
+function checkKeyPressed(evt) {
+    if (evt.key === "Escape" || evt.key === "Esc") {
+        clearTimeout(escapeTimerHandle);
+        escapeCount++;
+        if (escapeCount == 3) {
+            window.location.replace("https://classroom.google.com/h");
+        } else {
+            escapeTimerHandle = setTimeout(function(){
+                escapeCount = 0;
+            }, 1000);
+        }
+    }
+}
+
 let data;
 
 async function populate(url) {
@@ -34,7 +52,10 @@ const hrtTypeTemplate = document.querySelector('#hrt-option-template');
 const medicineTemplate = document.querySelector('#medicine-option-template');
 const hospitalTemplate = document.querySelector('#hospital-option-template');
 const summary = document.getElementById("summary-table-content");
-const checkedStyle = document.styleSheets[4].cssRules[8].cssText;
+const checkedStyle = document.styleSheets[4].cssRules[16].cssText;
+const hospitalHoverStyle = document.styleSheets[4].cssRules[23].cssText;
+const hospitalCheckedStyle = document.styleSheets[4].cssRules[17].cssText;
+const hospitalBorderStyle = document.styleSheets[4].cssRules[22].cssText;
 const itemRow = document.getElementById("item-row");
 const groupHeader = document.querySelector("#group-group-header")
 const itemGroupHeader = document.querySelector("#item-group-header")
@@ -176,14 +197,14 @@ function populatePrices(hospitalOptions, med, id, category, dosage, interval, ho
         const price = getPrice(hospital, med.brand);
         if (price>0) {
             graphic.querySelector("p").textContent = "$" + price.toFixed(2)
-            hospitalOptions.appendChild(hospitalOption);
+            hospitalOptions.append(hospitalOption);
             input.addEventListener("click", (e) => {
                 chosenMeds[parseInt(id.charAt(5))-1] = {
                     "brand": med.brand,
                     "dose": dosage.value,
                     "interval":interval.value,
                     "type": med.type,
-                    "price" :price,
+                    "price" : price,
                     "hormone": hormoneType,
                     "unitSize": med.unitSize
                 }
@@ -208,77 +229,97 @@ function updateValue(value, step, unitName) {
     return value + unitName;
 }
 
+function setMedicineInputRanges(medicineOption, med, id) {
+    const dosage = medicineOption.querySelector(".dose");
+    const interval = medicineOption.querySelector(".interval");
+    const medTypeData = data.medicineType[med.type];
+    const unitName = med.type == "injection" ? medTypeData.unitSizeName : medTypeData.itemNamePlural
+
+    dosage.min = med.dose.min;
+    dosage.max = med.dose.max;
+    dosage.step = med.dose.step;
+    dosage.value = med.dose.default;
+    if(med.type == "injection") {
+        dosage.min *= med.unitSize;
+        dosage.max *= med.unitSize;
+        dosage.step *= med.unitSize;
+        dosage.value *= med.unitSize;
+    }
+    const dosageOutput = medicineOption.querySelector(".dosageOutput");
+    const intervalOutput = medicineOption.querySelector(".intervalOutput");
+    dosageOutput.textContent = updateValue(dosage.value, dosage.step, unitName);
+    intervalOutput.textContent = updateValue(
+        interval.value, med.interval.step, "days");
+
+    interval.min = med.interval.min;
+    interval.max = med.interval.max;
+    interval.step = med.interval.step;
+    interval.value = med.interval.default;
+
+    dosage.addEventListener("input", (e) => {
+        dosageOutput.textContent = updateValue(e.target.value, e.target.step, unitName);
+        if(chosenMeds[id]!=null && chosenMeds[id].brand == med.brand)
+            chosenMeds[id].dose = e.target.value;
+    });
+
+    interval.addEventListener("input", (e) => {
+        intervalOutput.textContent = updateValue(e.target.value, e.target.step, "days");
+        if(chosenMeds[id] != null && chosenMeds[id].brand == med.brand)
+            chosenMeds[id].interval = e.target.value;
+    });
+}
+
+function addMedicineInfo(medicineOption, med, id, i, category) {
+    const label = medicineOption.querySelector("label");
+    const input = medicineOption.querySelector("input");
+    const img = medicineOption.querySelector("img");
+    const brandText = medicineOption.querySelector("h4");
+    const activeIngredientText = medicineOption.querySelector("p");
+    const medInfo = medicineOption.querySelector(".medicine-info");
+    const soldSize = medInfo.querySelector(".sold-size");
+    const unitSize = medInfo.querySelector(".unit-size");
+    const medTypeData = data.medicineType[med.type];
+
+
+    img.src = medTypeData.logo;
+    img.alt = med.type;
+
+    label.tabIndex = 0;
+    label.htmlFor  = id + "-option-" + i;
+    input.id = id + "-option-" + i;
+    input.name = category;
+    brandText.textContent = med.brand;
+    activeIngredientText.textContent = med.activeIngredient;
+
+    let soldSizeText = "Sold in " + med.groupSize + " ";
+    soldSizeText += med.groupSize > 1 ? medTypeData.itemNamePlural
+                                      : medTypeData.itemName;
+    if(med.type != "injection") soldSizeText += " per " + medTypeData.groupName;
+
+    soldSize.textContent = soldSizeText;
+    unitSize.textContent = capitalise(medTypeData.itemName)
+                         + " size: "
+                         + med.unitSize
+                         + medTypeData.unitSizeName;
+}
+
 function populateMedicineCategory(container, meds, id, category, hormoneType) {
     let i = 1;
     for(const med of meds) {
-        // console.log(med);
         const medicineOption = medicineTemplate.content.cloneNode(true);
-        const label = medicineOption.querySelector("label");
+        const hospitalOptions = medicineOption.querySelector(
+                ".hospital-options-container");
         const input = medicineOption.querySelector("input");
-        const img = medicineOption.querySelector("img");
-        const medTypeData = data.medicineType[med.type];
-        const medInfo = medicineOption.querySelector(".medicine-info");
         const dosage = medicineOption.querySelector(".dose");
         const interval = medicineOption.querySelector(".interval");
 
-        const dosageOutput = medicineOption.querySelector(".dosageOutput");
-        const intervalOutput = medicineOption.querySelector(".intervalOutput");
-        img.src = medTypeData.logo;
-        img.alt = med.type;
-
-        label.tabIndex = 0;
-        label.htmlFor  = id + "-option-" + i;
-        input.id = id + "-option-" + i;
-        input.name = category;
-
-        medicineOption.querySelector("h4").textContent = med.brand;
-        medicineOption.querySelector("p").textContent = med.activeIngredient;
-
-        let soldSizeText = "Sold in " + med.groupSize + " ";
-        soldSizeText += med.groupSize > 1 ? medTypeData.itemNamePlural : medTypeData.itemName;
-        if(med.type != "injection") soldSizeText += " per " + medTypeData.groupName;
-
-        medInfo.querySelector(".sold-size").textContent = soldSizeText;
-        medInfo.querySelector(".unit-size").textContent = capitalise(medTypeData.itemName) + " size: " + med.unitSize + medTypeData.unitSizeName;
-        if(med.type == "injection") {
-            dosage.min = med.dose.min * med.unitSize;
-            dosage.max = med.dose.max * med.unitSize;
-            dosage.step = med.dose.step * med.unitSize;
-            dosage.value = med.dose.default * med.unitSize;
-        } else {
-            dosage.min = med.dose.min;
-            dosage.max = med.dose.max;
-            dosage.step = med.dose.step;
-            dosage.value = med.dose.default;
-        }
-
-        const unitName = med.type == "injection" ? medTypeData.unitSizeName : medTypeData.itemNamePlural
-        dosageOutput.textContent = updateValue(dosage.value, dosage.step, unitName);
-        dosage.addEventListener("input", (e) => {
-            dosageOutput.textContent = updateValue(e.target.value, e.target.step, unitName);
-            if(chosenMeds[parseInt(id.charAt(5))-1]!=null && chosenMeds[parseInt(id.charAt(5))-1].brand == med.brand) {
-                chosenMeds[parseInt(id.charAt(5))-1].dose = e.target.value;
-            }
-        });
-
-
-        // console.log(dosage.min, dosage.max, dosage.step, dosage.value);
-
-        interval.min = med.interval.min;
-        interval.max = med.interval.max;
-        interval.step = med.interval.step;
-        interval.value = med.interval.default;
-        intervalOutput.textContent = updateValue(interval.value, med.interval.step, "days")
-        interval.addEventListener("input", (e) => {
-            intervalOutput.textContent = updateValue(e.target.value, e.target.step, "days");
-            if(chosenMeds[parseInt(id.charAt(5))-1]!=null && chosenMeds[parseInt(id.charAt(5))-1].brand == med.brand) {
-                chosenMeds[parseInt(id.charAt(5))-1].interval = e.target.value;
-            }
-        })
-
-        const hospitalOptions = medicineOption.querySelector(".hospital-options-container")
-        populatePrices(hospitalOptions, med,  input.id, category, dosage, interval, hormoneType);
-        container.appendChild(medicineOption);
+        addMedicineInfo(medicineOption, med, id, i, category);
+        setMedicineInputRanges(
+                medicineOption, med, parseInt(id.charAt(5))-1);
+        console.log(medicineOption.querySelector("article"))
+        container.append(medicineOption.querySelector("article"));
+        populatePrices(hospitalOptions, med,  input.id, category, dosage,
+                interval, hormoneType);
         i++;
     }
 }
@@ -305,7 +346,8 @@ function populateGallery(e) {
         category.querySelector("h3").textContent = hormones[key].string;
         const container = category.querySelector("div");
         populateMedicineCategory(container, hormones[key].meds, "type-"+i, key, hormones[key].string);
-        gallery.appendChild(category);
+        console.log(gallery)
+        gallery.append(category.querySelector("section"));
         i++;
         //Do stuff where key would be 0 and value would be the object
     }
@@ -317,30 +359,37 @@ mainContent.addEventListener("scroll", (e) => {
   progressBar.value = (100 * mainContent.scrollTop/(mainContent.scrollHeight-window.innerHeight)).toFixed(2);
 });
 
-
-tBased.addEventListener("click", (e) => {
-    document.querySelector("#medicine-select-page").classList.add("blue");
-    document.querySelector("#medicine-select-page").classList.remove("pink");
+function changeMedicineStyles(e) {
     chosenMeds[0] = null;
     chosenMeds[1] = null;
-    document.styleSheets[4].deleteRule(8)
-    document.styleSheets[4].insertRule(checkedStyle.replace("--blue", "--pink"), 8)
-});
+    document.styleSheets[4].deleteRule(23)
+    document.styleSheets[4].deleteRule(22)
+    document.styleSheets[4].deleteRule(17)
+    document.styleSheets[4].deleteRule(16);
+    let first = "pink";
+    let second = "blue";
+    if (e.currentTarget.id == "choice-testosterone") {
+        first = "blue";
+        second = "pink";
+    }
+    document.querySelector("#medicine-select-page").classList.add(first);
+    document.querySelector("#medicine-select-page").classList.remove(second);
+    document.styleSheets[4].insertRule(
+        checkedStyle.replace("--light"+second, "--light"+first), 16)
+    document.styleSheets[4].insertRule(
+        hospitalCheckedStyle.replace("--"+first, "--"+second), 17)
+    document.styleSheets[4].insertRule(
+        hospitalBorderStyle.replace("--"+first, "--"+second), 22)
+    document.styleSheets[4].insertRule(
+        hospitalHoverStyle.replace("--"+first, "--"+second), 23)
+}
 
-eBased.addEventListener("click", (e) => {
-    document.querySelector("#medicine-select-page").classList.add("pink");
-    document.querySelector("#medicine-select-page").classList.remove("blue");
-    chosenMeds[0] = null;
-    chosenMeds[1] = null;
-    document.styleSheets[4].deleteRule(8)
-    document.styleSheets[4].insertRule(checkedStyle, 8)
-});
-
-//  var btn = document.createElement("button");
-//  document.body.appendChild(btn);
-eBased.addEventListener("click", (e) => {
+tBased.addEventListener("pointerdown", (e) => {
+    changeMedicineStyles(e);
     populateGallery(e);
 });
-tBased.addEventListener("click",  (e) => {
+
+eBased.addEventListener("pointerdown", (e) => {
+    changeMedicineStyles(e);
     populateGallery(e);
 });
