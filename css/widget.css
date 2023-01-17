@@ -38,7 +38,8 @@
     font-size: 0.75em;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin: 0em 1em;
+    margin: 0em auto;
+    max-width: 21ch;
 }
 
 .medicine-choice {

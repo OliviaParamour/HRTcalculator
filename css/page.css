@@ -8,10 +8,10 @@
     scroll-snap-align: start;
     display: grid;
     grid-template:
-    "a a a" 1fr
-    "b c d" 8fr
-    "e e e" 1fr
-    "f f f" 10vh / 1fr 10fr 1fr;
+    "f a a a g" 1fr
+    "f b c d g" 8fr
+    "f e e e g" 1fr
+    "f i i i g" 10vh / 1fr auto 7fr auto 1fr;
     justify-items: center;
 }
 
@@ -63,7 +63,7 @@ input::-webkit-inner-spin-button {
 }
 
 .page>.next-btn {
-    grid-area: f;
+    grid-area: e;
     place-self: center flex-end;
 }
 
@@ -96,7 +96,9 @@ input::-webkit-inner-spin-button {
     grid-area: c;
 }
 
-
+#medicine-select-page{
+    position: relative;
+}
 
 .gallery-options {
     width: calc(100vw * 5/6);
@@ -126,10 +128,20 @@ input::-webkit-inner-spin-button {
 
 .page-navigation {
     width: 100%;
-    grid-area: 3 / 2 / 4 / 3;
+    grid-area: e;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 10vh;
+}
+
+.medicine-left {
+    grid-area: b;
+    position: absolute;
+}
+
+.medicine-right {
+    grid-area: d;
+    position: absolute;
 }
 
 @media screen and (min-width:50em) {

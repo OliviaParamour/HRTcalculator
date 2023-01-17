@@ -12,10 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="https://cdn.glitch.global/e41cbd5e-2d0c-4097-956a-79ca94cd4f3b/favicon.ico" />
 
-  <!--
-      This is an HTML comment
-      You can write text in a comment and the content won't be visible in the page
-    -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <title>HRT Cost Calculator WIP</title>
 
@@ -103,11 +100,17 @@
         </div>
       </section>
       <section class="page flex column" id="medicine-select-page">
+        <span class="medicine-btn material-symbols-outlined medicine-left" id="medicine-backward">
+          arrow_back_ios
+          </span>
         <div class="options-container flex column">
           <h2>Choose your medicine</h2>
           <section class="gallery-options flex"></section>
           <!-- <p class="warning hidden" id="warning-not-loaded">Content not Loaded</p> -->
         </div>
+        <span class="medicine-btn material-symbols-outlined medicine-right" id="medicine-forward">
+          arrow_forward_ios
+          </span>
         <div class="page-navigation flex">
           <a class="btn nav-btn back-btn" href="#hrt-select-page">
             <div class="btn-graphics">Back</div>

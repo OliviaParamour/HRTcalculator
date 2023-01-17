@@ -10,9 +10,13 @@
 }
 
 .nav-btn {
-    margin: 1em;
+    /* margin: 1em; */
     border-radius: 35px;
     max-width: 20ch;
+}
+
+.medicine-btn:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 

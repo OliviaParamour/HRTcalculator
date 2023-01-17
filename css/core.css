@@ -24,6 +24,19 @@ body {
     background-color: lightcoral;
 }
 
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+    /* margin:auto; */
+    font-size: 2rem;
+    padding: 0.5em;
+    border-radius: 100vw;
+    border: 1px solid var(--lightpink);
+}
+
 .warning {
     text-align: left;
     color: red;
@@ -159,6 +172,7 @@ footer {
     #nav-container {
         flex-direction: row;
     }
+
     #progress {
         visibility: visible;
     }
