@@ -384,22 +384,24 @@ tBased.addEventListener("pointerdown", (e) => {
     // alert("pointer")
     changeMedicineStyles(e);
     populateGallery(e);
+    console.log("populated")
 });
 
 eBased.addEventListener("pointerdown", (e) => {
     // alert("pointer")
     changeMedicineStyles(e);
     populateGallery(e);
+    console.log("populated")
 });
 
 tBased.addEventListener("click", (e) => {
-    window.location.href="#medicine-select-page";
-    // alert("mouse")
+    mainContent.scrollBy({top:mainContent.clientHeight, behavior:"smooth"})
+    console.log("scroll")
 });
 
 eBased.addEventListener("click", (e) => {
-    // alert("mouse")
-    window.location.href="#medicine-select-page";
+    mainContent.scrollBy({top:mainContent.clientHeight, behavior:"smooth"})
+    console.log("scroll")
 });
 
 const medForwardBtn = document.getElementById("medicine-forward");
