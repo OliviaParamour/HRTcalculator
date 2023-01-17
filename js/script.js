@@ -392,16 +392,14 @@ eBased.addEventListener("pointerdown", (e) => {
     populateGallery(e);
 });
 
-tBased.addEventListener("mousedown", (e) => {
+tBased.addEventListener("click", (e) => {
+    window.location.href="#medicine-select-page"
     // alert("mouse")
-    changeMedicineStyles(e);
-    populateGallery(e);
 });
 
-eBased.addEventListener("mousedown", (e) => {
+eBased.addEventListener("click", (e) => {
     // alert("mouse")
-    changeMedicineStyles(e);
-    populateGallery(e);
+    window.location.href="#medicine-select-page"
 });
 
 const medForwardBtn = document.getElementById("medicine-forward");
