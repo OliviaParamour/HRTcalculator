@@ -95,6 +95,7 @@
 .hrt-btn-circle>p {
     margin: 0;
     text-align: center;
+    user-select: none;
 }
 
 #hrt-container {

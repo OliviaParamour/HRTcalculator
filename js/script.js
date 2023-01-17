@@ -393,13 +393,13 @@ eBased.addEventListener("pointerdown", (e) => {
 });
 
 tBased.addEventListener("click", (e) => {
-    window.location.href="#medicine-select-page"
+    window.location.href="#medicine-select-page";
     // alert("mouse")
 });
 
 eBased.addEventListener("click", (e) => {
     // alert("mouse")
-    window.location.href="#medicine-select-page"
+    window.location.href="#medicine-select-page";
 });
 
 const medForwardBtn = document.getElementById("medicine-forward");
