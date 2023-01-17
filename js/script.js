@@ -396,12 +396,14 @@ eBased.addEventListener("pointerdown", (e) => {
 });
 
 tBased.addEventListener("pointerdown", (e) => {
-    mainContent.scrollBy({top:mainContent.clientHeight, behavior:"smooth"})
+    // window.location.replace("#medicine-select-page");
+    mainContent.scrollBy({top:50, behavior:"smooth"})
     console.log("scroll")
 });
 
 eBased.addEventListener("pointerdown", (e) => {
-    mainContent.scrollBy({top:mainContent.clientHeight, behavior:"smooth"})
+    // window.location.replace("#medicine-select-page");
+    mainContent.scrollBy({top:50, behavior:"smooth"})
     console.log("scroll")
 });
 
