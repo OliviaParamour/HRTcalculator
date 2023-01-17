@@ -392,14 +392,15 @@ eBased.addEventListener("pointerdown", (e) => {
     changeMedicineStyles(e);
     populateGallery(e);
     console.log("populated")
+
 });
 
-tBased.addEventListener("click", (e) => {
+tBased.addEventListener("pointerdown", (e) => {
     mainContent.scrollBy({top:mainContent.clientHeight, behavior:"smooth"})
     console.log("scroll")
 });
 
-eBased.addEventListener("click", (e) => {
+eBased.addEventListener("pointerdown", (e) => {
     mainContent.scrollBy({top:mainContent.clientHeight, behavior:"smooth"})
     console.log("scroll")
 });
