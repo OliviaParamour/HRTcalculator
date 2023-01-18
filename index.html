@@ -32,19 +32,24 @@
 
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- apple related meta tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/icon120.png">
+
   <!-- Import the webpage's stylesheet -->
-  <link rel="stylesheet" href="./css/animation.css" />
-  <link rel="stylesheet" href="./css/core.css" />
-  <link rel="stylesheet" href="./css/buttons.css" />
-  <link rel="stylesheet" href="./css/page.css" />
-  <link rel="stylesheet" href="./css/widget.css" />
+  <link rel="stylesheet" href="./css/animation.css">
+  <link rel="stylesheet" href="./css/core.css">
+  <link rel="stylesheet" href="./css/agepage.css">
+  <link rel="stylesheet" href="./css/hrtpage.css">
+  <link rel="stylesheet" href="./css/medicinepage.css">
+  <link rel="stylesheet" href="./css/summarypage.css">
 
   <!-- Import the webpage's javascript file -->
   <script type="module" src="./js/script.js" defer></script>
 </head>
 
 <body>
-  <div id="smooth-scroll">
+  <div id="root-container">
     <header id="start-page">
       <nav>
         <a href="index.html">Main Page</a>
@@ -145,10 +150,10 @@
               <tr id="summary-total">
                 <td></td>
                 <td>Total</td>
-                <td class="costValue">0.00</td>
-                <td class="costValue">0.00</td>
-                <td class="costValue">0.00</td>
-                <td class="costValue">0.00</td>
+                <td class="costValue align-right"">0.00</td>
+                <td class="costValue align-right"">0.00</td>
+                <td class="costValue align-right"">0.00</td>
+                <td class="costValue align-right"">0.00</td>
               </tr>
             </tfoot>
           </table>
@@ -183,16 +188,16 @@
       <label class="hospital-option" for="type-1-option-1-hospital-1">
         <input type="radio" name="type1option1hospital" id="type-1-option-1-hospital-1">
         <div class="hospital-option-graphic">
-          <h6>Hospital Name</h6>
+          <h6 class="hospital-name">Hospital Name</h6>
           <p>$4.00</p>
         </div>
       </label>
     </template>
     <template id="medicine-option-template">
       <article class="medicine-choice" id="type-1-option-1">
-        <img class="medicine-type-logo" />
+        <img class="medicine-choice-logo" />
         <h4>Androcur</h4>
-        <p>Cyproterone Acetate</p>
+        <p class="activeIngredient">Cyproterone Acetate</p>
         <section class="medicine-info">
           <h5>Information</h5>
           <p class="sold-size">Sold in: 10 tabs per strip</p>
@@ -225,8 +230,11 @@
     </template>
     <template id="hrt-option-template">
       <section class="medicine-type">
-        <h3>Hormone</h3>
-        <div class="flex">
+        <div class="flex medicine-type-header">
+          <h3>Hormone</h3>
+          <h3>End</h3>
+        </div>
+        <div class="flex medicine-choices">
         </div>
       </section>
     </template>
@@ -241,10 +249,10 @@
     <template id="item-row">
       <tr>
         <td>brand name</td>
-        <td class="costValue">0.00</td>
-        <td class="costValue">0.00</td>
-        <td class="costValue">0.00</td>
-        <td class="costValue">0.00</td>
+        <td class="costValue align-right">0.00</td>
+        <td class="costValue align-right">0.00</td>
+        <td class="costValue align-right">0.00</td>
+        <td class="costValue align-right">0.00</td>
       </tr>
     </template>
   </div>

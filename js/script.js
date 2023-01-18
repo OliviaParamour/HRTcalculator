@@ -51,10 +51,10 @@ const hrtTypeTemplate = document.querySelector('#hrt-option-template');
 const medicineTemplate = document.querySelector('#medicine-option-template');
 const hospitalTemplate = document.querySelector('#hospital-option-template');
 const summary = document.getElementById("summary-table-content");
-const checkedStyle = document.styleSheets[4].cssRules[16].cssText;
-const hospitalHoverStyle = document.styleSheets[4].cssRules[22].cssText;
-const hospitalCheckedStyle = document.styleSheets[4].cssRules[17].cssText;
-const hospitalBorderStyle = document.styleSheets[4].cssRules[21].cssText;
+const hospitalBorderStyle = document.styleSheets[5].cssRules[18].cssText;
+const hospitalHoverStyle = document.styleSheets[5].cssRules[19].cssText;
+const hospitalCheckedStyle = document.styleSheets[5].cssRules[22].cssText;
+const checkedStyle = document.styleSheets[5].cssRules[23].cssText;
 const itemRow = document.getElementById("item-row");
 const groupHeader = document.querySelector("#group-group-header")
 const itemGroupHeader = document.querySelector("#item-group-header")
@@ -64,10 +64,12 @@ let age = null;
 
 ageNextBtn.addEventListener("click", (e) => {
     const parentsWarning = document.querySelector("#warning-under-21");
-    const under18Warning = document.querySelector("#warning-under-18")
+    const under18Warning = document.querySelector("#warning-under-18");
     if (ageSelect.value == "") {
         ageSelect.value = 13;
         age = 13;
+    } else {
+        age = ageSelect.value;
     }
     if (age < 21) {
         parentsWarning.classList.remove("hidden");
@@ -78,7 +80,7 @@ ageNextBtn.addEventListener("click", (e) => {
         under18Warning.classList.remove("hidden");
         under18Warning.textContent = "At age " + age + ", you may have to wait until you are 18 to start HRT in Singapore."
     } else {
-        under18Warning.textContent = "";
+        // under18Warning.textContent = "";
         under18Warning.classList.add("hidden");
     }
 });
@@ -271,7 +273,7 @@ function setMedicineInputRanges(medicineOption, med, id) {
 function addMedicineInfo(medicineOption, med, id, i, category) {
     const label = medicineOption.querySelector("label");
     const input = medicineOption.querySelector("input");
-    const img = medicineOption.querySelector("img");
+    const img = medicineOption.querySelector(".medicine-choice-logo");
     const brandText = medicineOption.querySelector("h4");
     const activeIngredientText = medicineOption.querySelector("p");
     const medInfo = medicineOption.querySelector(".medicine-info");
@@ -342,7 +344,7 @@ function populateGallery(e) {
         const category = hrtTypeTemplate.content.cloneNode(true);
         category.querySelector(".medicine-type").id = "type-" + i;
         category.querySelector("h3").textContent = hormones[key].string;
-        const container = category.querySelector("div");
+        const container = category.querySelector(".medicine-choices");
         populateMedicineCategory(container, hormones[key].meds, "type-" + i, key, hormones[key].string);
         gallery.append(category.querySelector("section"));
         i++;
@@ -359,10 +361,10 @@ mainContent.addEventListener("scroll", (e) => {
 function changeMedicineStyles(e) {
     chosenMeds[0] = null;
     chosenMeds[1] = null;
-    document.styleSheets[4].deleteRule(22)
-    document.styleSheets[4].deleteRule(21)
-    document.styleSheets[4].deleteRule(17)
-    document.styleSheets[4].deleteRule(16);
+    document.styleSheets[5].deleteRule(23)
+    document.styleSheets[5].deleteRule(22)
+    document.styleSheets[5].deleteRule(19)
+    document.styleSheets[5].deleteRule(18);
     let first = "pink";
     let second = "blue";
     if (e.currentTarget.id == "choice-testosterone") {
@@ -371,14 +373,14 @@ function changeMedicineStyles(e) {
     }
     document.querySelector("#medicine-select-page").classList.add(first);
     document.querySelector("#medicine-select-page").classList.remove(second);
-    document.styleSheets[4].insertRule(
-        checkedStyle.replace("--light" + second, "--light" + first), 16)
-    document.styleSheets[4].insertRule(
-        hospitalCheckedStyle.replace("--" + first, "--" + second), 17)
-    document.styleSheets[4].insertRule(
-        hospitalBorderStyle.replace("--" + first, "--" + second), 21)
-    document.styleSheets[4].insertRule(
-        hospitalHoverStyle.replace("--" + first, "--" + second), 22)
+    document.styleSheets[5].insertRule(
+        hospitalBorderStyle.replace("--" + second, "--" + first), 18)
+    document.styleSheets[5].insertRule(
+        hospitalHoverStyle.replace("--" + second, "--" + first), 19)
+    document.styleSheets[5].insertRule(
+        hospitalCheckedStyle.replace("--" + second, "--" + first), 22)
+    document.styleSheets[5].insertRule(
+        checkedStyle.replace("--light" + second, "--light" + first), 23)
 }
 
 tBased.addEventListener("pointerdown", (e) => {

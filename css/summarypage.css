@@ -1,0 +1,48 @@
+#summary-page {
+    background-color: var(--blue);
+}
+
+table {
+    border: 2px solid black;
+    width: 100%;
+    max-width: fit-content;
+    padding: 1em;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+th[scope="rowgroup"] {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+td {
+    font-size: 80%;
+}
+
+thead>tr>td {
+    border-bottom: 2px solid black;
+}
+.costValue::before {
+    content: "$";
+}
+
+.summary-category {
+
+    transform: rotate(-180deg);
+    text-align: center;
+}
+
+.vertical-text {
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+@media screen and (min-width: 41.875em) {
+    td {
+        font-size: 100%;
+    }
+
+}

@@ -1,0 +1,157 @@
+@charset "utf-8";
+
+#medicine-select-page{
+    position: relative;
+}
+
+/* medicine buttons */
+
+.medicine-btn:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.medicine-left {
+    grid-area: b;
+    position: absolute;
+}
+
+.medicine-right {
+    grid-area: d;
+    position: absolute;
+}
+
+/* gallery options */
+.gallery-options {
+    width: calc(100vw * 5/6);
+    gap: 2em;
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0);
+    overflow: auto hidden;
+    scroll-snap-type: x mandatory;
+}
+
+.gallery-options::-webkit-scrollbar {
+    /* padding-top: 1em; */
+    width: 10%;
+    height: 15px;
+    /* width of the entire scrollbar */
+}
+
+.gallery-options::-webkit-scrollbar-track {
+    background: none;
+    /* color of the tracking area */
+}
+
+.gallery-options::-webkit-scrollbar-thumb {
+    /* width: 40%; */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+/* gallery options > medicine type */
+
+.medicine-type-header>h3 {
+    display: inline-block;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.medicine-type>h3:after {
+    content: "->"
+}
+
+/* gallery options > medicine type > medicine choices */
+
+.medicine-choices {
+    gap: 1em;
+    justify-content: center;
+    margin: 1em 0em;
+}
+
+.medicine-choice {
+    scroll-snap-align: start;
+    scroll-margin: 0 5px;
+    white-space: nowrap;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+    width: fit-content;
+    width: 26ch;
+    margin: 0 5px;
+}
+
+.medicine-choice-logo {
+    display: block;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    margin: 0 0 -32px 0;
+    z-index: 2;
+}
+
+p.activeIngredient {
+    font-size: 0.75em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0em auto;
+    max-width: 21ch;
+}
+
+.medicine-choice>section {
+    margin: 1em 1em;
+}
+
+.medicine-info>* {
+    margin: 0.5em 0em;
+}
+
+.hospital-options-container {
+    justify-content: center;
+    gap: 1em;
+}
+
+
+/* gallery options > medicine type > medicine choices > hospital-option */
+.hospital-option>input[type=radio] {
+    display: none;
+}
+
+.hospital-option-graphic {
+    padding: 1em;
+    border: 1.5px solid var(--pink);
+    border-radius: 10px;
+    margin-top: 1em;
+}
+
+.hospital-option-graphic:hover {
+    background-color: var(--pink);
+    color: white;
+    transition: all 0.2s ease-out;
+}
+
+.hospital-option:active {
+    transform: scale(0.9);
+    transition: all 0.3s linear;
+}
+
+.hospital-option:disabled {
+    color: gray;
+}
+
+input:checked+.hospital-option-graphic{
+    color: white;
+    /* background: green; */
+    background: var(--pink);
+    transition: border 0.3s linear, transform 0.3s, linear;
+    box-sizing: content-box;
+    transition: border 0.3s linear;
+}
+
+.medicine-choice:has(input:checked) {
+    box-shadow: 0px 0px 0px 5px var(--lightpink);
+    margin: 0 5px;
+    transition: box-shadow 0.3s ease-in;
+}
+
+.hospital-name {
+    text-align: left;
+}

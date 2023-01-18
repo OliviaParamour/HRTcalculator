@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* Page 1 Age select */
+input#age-select {
+    font: 5em var(--main-font);
+    border: none;
+    width: 3ch;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    color: black;
+    background: rgba(255, 255, 255, 0.1);
+    caret-color: red;
+    border-radius: 20px;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input#age-select::placeholder {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+input#age-select:invalid {
+    background: red;
+}
+
+input#age-select::-webkit-outer-spin-button,
+input#age-select::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
