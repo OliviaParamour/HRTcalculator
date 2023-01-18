@@ -246,14 +246,15 @@ function setMedicineInputRanges(medicineOption, med, id) {
     const dosageOutput = medicineOption.querySelector(".dosageOutput");
     const intervalOutput = medicineOption.querySelector(".intervalOutput");
     dosageOutput.textContent = updateValue(dosage.value, dosage.step, unitName);
-    intervalOutput.textContent = updateValue(
-        interval.value, med.interval.step, "days");
+
 
     interval.min = med.interval.min;
     interval.max = med.interval.max;
     interval.step = med.interval.step;
     interval.value = med.interval.default;
 
+    intervalOutput.textContent = updateValue(
+        interval.value, med.interval.step, "days");
     dosage.addEventListener("input", (e) => {
         dosageOutput.textContent = updateValue(e.target.value, e.target.step, unitName);
         if (chosenMeds[id] != null && chosenMeds[id].brand == med.brand)
