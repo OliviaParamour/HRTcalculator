@@ -182,7 +182,7 @@ main {
 /* progress bar */
 
 #progress {
-    /* visibility: hidden; */
+    visibility: hidden;
     border-radius: 0;
     left: 0;
     width: 100%;
@@ -190,7 +190,7 @@ main {
     bottom: 0;
 }
 
-#progress::-webkit-progress-bar,
+/* #progress::-webkit-progress-bar, */
 #progress::-moz-progress-bar {
     background-color: lime;
     border-radius: 7px;
