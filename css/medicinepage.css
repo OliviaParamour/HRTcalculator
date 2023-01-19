@@ -48,14 +48,11 @@
 }
 
 /* gallery options > medicine type */
-
-.medicine-type-header>h3 {
-    display: inline-block;
-    margin-bottom: 1em;
-    text-align: left;
+.medicine-type-header {
+    justify-content: space-between;
 }
 
-.medicine-type>h3:after {
+.medicine-type-header>h3:after {
     content: "->"
 }
 
@@ -64,19 +61,20 @@
 .medicine-choices {
     gap: 1em;
     justify-content: center;
-    margin: 1em 0em;
+    margin: 0.25em 0em;
 }
 
 .medicine-choice {
+    --checked-border:5px;
     scroll-snap-align: start;
-    scroll-margin: 0 5px;
+    scroll-margin: 0 var(--checked-border);
     white-space: nowrap;
     background-color: white;
-    padding: 1em;
+    padding: 0.5em;
     border-radius: 1em;
     width: fit-content;
     width: 26ch;
-    margin: 0 5px;
+    margin: 0 var(--checked-border);
 }
 
 .medicine-choice-logo {
@@ -97,7 +95,7 @@ p.activeIngredient {
 }
 
 .medicine-choice>section {
-    margin: 1em 1em;
+    margin: 0.5em 0;
 }
 
 .medicine-info>* {
@@ -116,8 +114,8 @@ p.activeIngredient {
 }
 
 .hospital-option-graphic {
-    padding: 1em;
-    border: 1.5px solid var(--pink);
+    padding: 0.75em;
+    border: 0.125em solid var(--pink);
     border-radius: 10px;
     margin-top: 1em;
 }
@@ -147,11 +145,16 @@ input:checked+.hospital-option-graphic{
 }
 
 .medicine-choice:has(input:checked) {
-    box-shadow: 0px 0px 0px 5px var(--lightpink);
-    margin: 0 5px;
+    box-shadow: 0px 0px 0px var(--checked-border) var(--lightpink);
     transition: box-shadow 0.3s ease-in;
 }
 
 .hospital-name {
     text-align: left;
+}
+
+@media screen and (min-width:50em) {
+    .medicine-choice {
+        padding: 1em;
+    }
 }
