@@ -71,7 +71,7 @@ document.getElementById("medicine-backward").addEventListener("click", (e) => {
 
 // summary page
 document.getElementById("medicine-next").addEventListener("click", (e) => {
-    generateTable(e, chosenMeds, lifeTimeCheckbox);
+    generateTable(e, chosenMeds, lifeTimeCheckbox, age);
 });
 
 // progress bar

@@ -8,7 +8,7 @@ const groupHeader = document.querySelector("#group-group-header");
 const itemGroupHeader = document.querySelector("#item-group-header");
 const totalData = document.getElementById("summary-total");
 
-function populateTablePrices(rows, medicine, total, limit=0) {
+function populateTablePrices(rows, medicine, total, age, limit=0) {
     const times = [1, 30, 365.2425, (100 - age) * 365.2425];
 
     let dailyPrice = (medicine.price * parseFloat(medicine.dose))
@@ -47,7 +47,7 @@ function setColumns(lifeTimeCheckbox) {
     }
 }
 
-function generateTable(e, chosenMeds, lifeTimeCheckbox) {
+function generateTable(e, chosenMeds, lifeTimeCheckbox, age) {
     while (summary.lastElementChild) {
         summary.removeChild(summary.lastElementChild);
     }
@@ -77,7 +77,7 @@ function generateTable(e, chosenMeds, lifeTimeCheckbox) {
             currentRow.appendChild(head);
             rowData[0].textContent = medicine.brand;
             populateTablePrices(rowData, medicine,
-                    totalData.querySelectorAll("td"), lifeTimeCheckbox);
+                    totalData.querySelectorAll("td"), age, lifeTimeCheckbox);
             summary.appendChild(currentRow);
             currentRow = null;
             summary.appendChild(row);
