@@ -101,14 +101,10 @@ function populatePrices(medicineCard, med, key, hormoneName) {
  * @returns a corrected fixed string representation of the number
  */
 function updateValue(value, step, unitName) {
-    if (step % 1 == 0) return value + " " + unitName;
-    let i = 1;
-    do {
-        if (step * (10 ** i) % 1 == 0) return parseFloat(value).toFixed(i) + " " + unitName;
-        i++;
-    }
-    while (step * i % 1 != 0 && i < 5)
-    return value + unitName;
+    console.log(step.toString().split(".")[1])
+    const fractional = step.toString().split(".")[1];
+    if (fractional == null) return value + " " + unitName;
+    else return parseFloat(value).toFixed(fractional.length) + " " + unitName;
 }
 
 /**
