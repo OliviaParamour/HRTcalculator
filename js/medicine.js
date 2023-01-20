@@ -93,10 +93,6 @@ function populatePrices(medicineCard, med, key, hormoneName) {
     }
 }
 
-function capitalise(text) {
-    return text[0].toUpperCase() + text.slice(1, text.length);
-}
-
 /**
  * Updates the value with the right number of zeroes
  * @param {Number} value A floating point value
@@ -179,7 +175,8 @@ function setMedicineInfo(medicineCard, med, id, i, hormoneName) {
     const activeIngredientText = medicineCard.querySelector("p");
     const medInfo = medicineCard.querySelector(".medicine-info");
     const soldSize = medInfo.querySelector(".sold-size");
-    const unitSize = medInfo.querySelector(".unit-size");
+    const unitSize = medInfo.querySelector(
+        ".unit-size").getElementsByTagName("span");
     const medTypeData = data.medicineType[med.type];
 
     img.src = medTypeData.logo;
@@ -198,10 +195,8 @@ function setMedicineInfo(medicineCard, med, id, i, hormoneName) {
     if (med.type != "injection") soldSizeText += " per " + medTypeData.groupName;
 
     soldSize.textContent = soldSizeText;
-    unitSize.textContent = capitalise(medTypeData.itemName)
-                         + " size: "
-                         + med.unitSize
-                         + medTypeData.unitSizeName;
+    unitSize[0].textContent = medTypeData.itemName
+    unitSize[1].textContent = med.unitSize + medTypeData.unitSizeName
 }
 
 /**

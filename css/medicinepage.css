@@ -106,6 +106,10 @@ p.activeIngredient {
     margin: 0.5em 0em;
 }
 
+.unit-size>span:first-child {
+    text-transform: capitalize;
+}
+
 .hospital-options-container {
     justify-content: center;
     gap: 1em;
