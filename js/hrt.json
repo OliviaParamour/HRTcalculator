@@ -20,6 +20,13 @@
             "unitSizeName": "ml",
             "concentrationName": ["g/10ml", "mg/1ml", "g/4ml"],
             "logo": "https://cdn.glitch.global/e41cbd5e-2d0c-4097-956a-79ca94cd4f3b/syringe.png"
+        },
+        "gel": {
+            "groupName": "box",
+            "itemName": "sachet",
+            "itemNamePlural": "sachets",
+            "unitSizeName": "mg",
+            "logo": "img/gel.png"
         }
     },
     "hormones": {
@@ -245,6 +252,26 @@
                             "max": 98,
                             "step": 7,
                             "default": 84
+                        }
+                    },
+                    {
+                        "brand": "Testogel",
+                        "activeIngredient": "Testosterone",
+                        "sources": ["CGH"],
+                        "type" : "gel",
+                        "groupSize": 30,
+                        "unitSize": 50,
+                        "dose": {
+                            "min": 0.1,
+                            "max": 0.5,
+                            "step": 0.1,
+                            "default": 0.1
+                        },
+                        "interval": {
+                            "min": 1,
+                            "max": 3,
+                            "step": 1,
+                            "default": 1
                         }
                     }
                 ]
@@ -488,6 +515,12 @@
                     "activeIngredient": "Testosterone undecanoate",
                     "brand": "Nebido",
                     "price": 280.37,
+                    "subsidy": false
+                },
+                {
+                    "activeIngredient": "Testosterone",
+                    "brand": "Testogel",
+                    "price": 5,
                     "subsidy": false
                 }
             ],
