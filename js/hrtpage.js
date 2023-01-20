@@ -24,6 +24,12 @@ for(let i=0; i<styleSheet.cssRules.length; i++) {
 
 document.querySelector("#medicine-select-page").classList.add("pink");
 let previousKey = "pink";
+
+/**
+ * Switches the style of the choose medicine page depending on whether one
+ * chose T based or E based HRT in the HRT select page
+ * @param {Event} e
+ */
 function changeMedicineStyles(e) {
     let key = e.currentTarget.id == "choice-testosterone"? "blue" : "pink";
     if(previousKey != key) {

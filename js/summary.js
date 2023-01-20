@@ -8,6 +8,14 @@ const groupHeader = document.querySelector("#group-group-header");
 const itemGroupHeader = document.querySelector("#item-group-header");
 const totalData = document.getElementById("summary-total");
 
+/**
+ *
+ * @param {Array} rows the table rows
+ * @param {Object} medicine The user set medicine dosage
+ * @param {Array} total The total row
+ * @param {Number} age Age of the user
+ * @param {Boolean} limit Whether the hide lifetime cost no longer exists
+ */
 function populateTablePrices(rows, medicine, total, age, limit=0) {
     const times = [1, 30, 365.2425, (100 - age) * 365.2425];
 
@@ -24,6 +32,10 @@ function populateTablePrices(rows, medicine, total, age, limit=0) {
     }
 }
 
+/**
+ * Removes the lifetime column if lifeTimeCheckbox is checked
+ * @param {Boolean} lifeTimeCheckbox Lifetime column toggle
+ */
 function setColumns(lifeTimeCheckbox) {
     const headData = document.querySelector("#summary-table-head");
     if (lifeTimeCheckbox) {
@@ -47,6 +59,13 @@ function setColumns(lifeTimeCheckbox) {
     }
 }
 
+/**
+ *
+ * @param {Event} e
+ * @param {Object} chosenMeds The user chosen medicine's dosage and info
+ * @param {Boolean} lifeTimeCheckbox Lifetime column toggle
+ * @param {Number} age Age of the user
+ */
 function generateTable(e, chosenMeds, lifeTimeCheckbox, age) {
     while (summary.lastElementChild) {
         summary.removeChild(summary.lastElementChild);

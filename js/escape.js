@@ -3,6 +3,11 @@ window.addEventListener("keydown", checkKeyPressed, false);
 let escapeTimerHandle = 0;
 let escapeCount = 0;
 
+/**
+ * Checks if the key escape key is pressed three times before redirecting the
+ * page
+ * @param {Event} evt
+ */
 function checkKeyPressed(evt) {
     if (evt.key === "Escape" || evt.key === "Esc") {
         clearTimeout(escapeTimerHandle);

@@ -2,6 +2,11 @@
 
 export { gallery, chosenMeds, populateGallery};
 
+/**
+ * Loads a json file, when loaded enable start button
+ * @param {String} url url of the json file
+ * @returns the json file
+ */
 async function populate(url) {
     const request = new Request(url);
     const btn = document.getElementById("start-btn");
@@ -26,6 +31,12 @@ const currency = new Intl.NumberFormat(
     'en-US', { style: 'currency', currency: 'USD' });
 const chosenMeds = [null, null];
 
+/**
+ * Retrieves the price of the medication
+ * @param {String} hospital the hospital shortform code, i.e. TTSH, CGH
+ * @param {String} medicineBrand the brand name of the medicine
+ * @returns the price of the medicine
+ */
 function getPrice(hospital, medicineBrand) {
     for (const hospitalMed of data.hospitals[hospital].hrt) {
         if (hospitalMed.brand == medicineBrand) {
@@ -35,13 +46,20 @@ function getPrice(hospital, medicineBrand) {
     return -1;
 }
 
-function populatePrices(medicineOption, med, category, hormoneType) {
+/**
+ * Populate prices for hospital button
+ * @param {Node} medicineCard The medicine card Node
+ * @param {Object} med The medicine data tree
+ * @param {String} key The specific hormone type name
+ * @param {String} hormoneName The name of the hormone
+ */
+function populatePrices(medicineCard, med, key, hormoneName) {
     let i = 1;
-    const hospitalOptions = medicineOption.querySelector(
+    const hospitalOptions = medicineCard.querySelector(
         ".hospital-options-container");
-    const id = medicineOption.querySelector("input").id;
-    const dosage = medicineOption.querySelector(".dose");
-    const interval = medicineOption.querySelector(".interval");
+    const id = medicineCard.querySelector("input").id;
+    const dosage = medicineCard.querySelector(".dose");
+    const interval = medicineCard.querySelector(".interval");
 
     for (const hospital of med.sources) {
         const hospitalOption = hospitalTemplate.content.cloneNode(true);
@@ -52,7 +70,7 @@ function populatePrices(medicineOption, med, category, hormoneType) {
         label.tabIndex = 0;
         label.htmlFor = id + "-hospital-" + i;
         input.id = id + "-hospital-" + i;
-        input.name = category + "hospital";
+        input.name = key + "hospital";
         graphic.querySelector("h6").textContent = hospital;
 
         const price = getPrice(hospital, med.brand);
@@ -66,7 +84,7 @@ function populatePrices(medicineOption, med, category, hormoneType) {
                     "interval": interval.value,
                     "type": med.type,
                     "price": price,
-                    "hormone": hormoneType,
+                    "hormone": hormoneName,
                     "unitSize": med.unitSize
                 }
             })
@@ -79,6 +97,13 @@ function capitalise(text) {
     return text[0].toUpperCase() + text.slice(1, text.length);
 }
 
+/**
+ * Updates the value with the right number of zeroes
+ * @param {Number} value A floating point value
+ * @param {Number} step The step of the range input
+ * @param {String} unitName The unit name, mg, mcg, ml, etc
+ * @returns a corrected fixed string representation of the number
+ */
 function updateValue(value, step, unitName) {
     if (step % 1 == 0) return value + " " + unitName;
     let i = 1;
@@ -90,14 +115,20 @@ function updateValue(value, step, unitName) {
     return value + unitName;
 }
 
-function setMedicineInputRanges(medicineOption, med, id) {
-    const dosage = medicineOption.querySelector(".dose");
-    const interval = medicineOption.querySelector(".interval");
+/**
+ * Sets the input ranges of dose and interval on the medicine card
+ * @param {Node} medicineCard The medicine card Node
+ * @param {Object} med The medicine data tree
+ * @param {String} id The id of the medicine card
+ */
+function setMedicineInputRanges(medicineCard, med, id) {
+    const dosage = medicineCard.querySelector(".dose");
+    const interval = medicineCard.querySelector(".interval");
     const medTypeData = data.medicineType[med.type];
     const unitName = med.type == "injection" ? medTypeData.unitSizeName
                                              : medTypeData.itemNamePlural;
-    const dosageOutput = medicineOption.querySelector(".dosageOutput");
-    const intervalOutput = medicineOption.querySelector(".intervalOutput");
+    const dosageOutput = medicineCard.querySelector(".dosageOutput");
+    const intervalOutput = medicineCard.querySelector(".intervalOutput");
 
     dosage.min = med.dose.min;
     dosage.max = med.dose.max;
@@ -132,13 +163,21 @@ function setMedicineInputRanges(medicineOption, med, id) {
     });
 }
 
-function setMedicineInfo(medicineOption, med, id, i, category) {
-    const label = medicineOption.querySelector("label");
-    const input = medicineOption.querySelector("input");
-    const img = medicineOption.querySelector(".medicine-choice-logo");
-    const brandText = medicineOption.querySelector("h4");
-    const activeIngredientText = medicineOption.querySelector("p");
-    const medInfo = medicineOption.querySelector(".medicine-info");
+/**
+ * Sets the Medicine Card's information
+ * @param {Node} medicineCard The medicine card node
+ * @param {Object} med The medicine data tree
+ * @param {String} id The id of the medicine type node
+ * @param {Number} i The local id number for the current medicine node
+ * @param {String} hormoneName The name of the hormone
+ */
+function setMedicineInfo(medicineCard, med, id, i, hormoneName) {
+    const label = medicineCard.querySelector("label");
+    const input = medicineCard.querySelector("input");
+    const img = medicineCard.querySelector(".medicine-choice-logo");
+    const brandText = medicineCard.querySelector("h4");
+    const activeIngredientText = medicineCard.querySelector("p");
+    const medInfo = medicineCard.querySelector(".medicine-info");
     const soldSize = medInfo.querySelector(".sold-size");
     const unitSize = medInfo.querySelector(".unit-size");
     const medTypeData = data.medicineType[med.type];
@@ -149,7 +188,7 @@ function setMedicineInfo(medicineOption, med, id, i, category) {
     label.tabIndex = 0;
     label.htmlFor = id + "-option-" + i;
     input.id = label.htmlFor;
-    input.name = category;
+    input.name = hormoneName;
     brandText.textContent = med.brand;
     activeIngredientText.textContent = med.activeIngredient;
 
@@ -165,6 +204,13 @@ function setMedicineInfo(medicineOption, med, id, i, category) {
                          + medTypeData.unitSizeName;
 }
 
+/**
+ * Populates the medicine category with medicine cards
+ * @param {Node} category The medicine category/hormone type node to populate
+ * @param {Object} hormone The hormone data tree for the hormone type
+ * @param {String} key The specific hormone type name
+ * @param {String} id The id of medicine/hormone type node
+ */
 function populateMedicineCategory(category, hormone, key, id) {
     const container = category.querySelector(".medicine-choices");
     let i = 1;
@@ -179,6 +225,12 @@ function populateMedicineCategory(category, hormone, key, id) {
     }
 }
 
+
+/**
+ * Populates the gallery with a hormone type and hands it off to other functions
+ * to populate that hormone type, i.e. medicine category
+ * @param {Event} e
+ */
 function populateGallery(e) {
     while (gallery.lastElementChild) {
         gallery.removeChild(gallery.lastElementChild);
